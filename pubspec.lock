@@ -275,6 +275,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.0"
+  glass:
+    dependency: "direct main"
+    description:
+      name: glass
+      sha256: "426f326fde00b990dae58d2b52780dea4bab5e19994bb49c581a18adcca4c6ec"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
   glob:
     dependency: transitive
     description:
