@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:space_app/core/components/background.dart';
-import 'package:space_app/features/splashscreen/presenter/screens/splash_screen.dart';
+
+import 'package:space_app/features/settings/presenter/screens/settings_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: SplashScreen.splashRoute,
-      routes: {SplashScreen.splashRoute: (context) => SplashScreen()},
+      initialRoute: SettingsPage.settingsRoutName,
+      routes: {SettingsPage.settingsRoutName: (context) => SettingsPage()},
       debugShowCheckedModeBanner: false,
     );
   }

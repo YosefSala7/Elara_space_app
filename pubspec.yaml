@@ -1,18 +1,16 @@
 name: space_app
 description: "A new Flutter project."
 
-publish_to: 'none' 
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
   sdk: ^3.11.0
 
-
 dependencies:
   flutter:
     sdk: flutter
-
 
   cupertino_icons: ^1.0.8
   gap: ^3.0.1
@@ -27,7 +25,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
   flutter_lints: ^6.0.0
 flutter_gen:
   output: lib/core/gen/
@@ -37,14 +34,12 @@ flutter_gen:
     lottie: true
 
 flutter:
-
-
   uses-material-design: true
 
   assets:
-    # - assets/imgs/
+    - assets/icons/
+    - assets/images/
     - assets/lotties/
-  #   - images/a_dot_ham.jpeg
 
   fonts:
     - family: SpaceGrotesk
