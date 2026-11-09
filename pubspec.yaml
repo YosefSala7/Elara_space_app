@@ -42,7 +42,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    # - assets/imgs/
+    - assets/icons/
     - assets/lotties/
   #   - images/a_dot_ham.jpeg
 
