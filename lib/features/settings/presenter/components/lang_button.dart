@@ -3,21 +3,33 @@ import 'package:space_app/core/app_colors.dart';
 
 class LangButton extends StatelessWidget {
   final String text;
-  const LangButton({super.key, required this.text});
+  final bool isSelected;
+  final VoidCallback? onTap;
+  const LangButton({
+    super.key,
+    required this.text,
+    this.isSelected = false,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: .all(12),
-      decoration: BoxDecoration(
-        color: AppColors.whiteColor.withValues(alpha: 0.03),
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Text(
-        text,
-        style: TextStyle(
-          color: AppColors.whiteColor,
-          fontFamily: "SpaceGrotesk",
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: .all(12),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? Colors.black.withValues(alpha: 0.35)
+              : AppColors.whiteColor.withValues(alpha: 0.05),
+          borderRadius: BorderRadius.circular(24),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: AppColors.whiteColor,
+            fontFamily: "SpaceGrotesk",
+          ),
         ),
       ),
     );

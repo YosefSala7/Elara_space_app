@@ -3,7 +3,7 @@ import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/components/background.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/features/settings/presenter/components/custome_row.dart';
-import 'package:space_app/features/settings/presenter/components/lang_button.dart';
+import 'package:space_app/features/settings/presenter/components/lang_selector.dart';
 import 'package:space_app/features/settings/presenter/components/settings_card.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -38,14 +38,16 @@ class SettingsPage extends StatelessWidget {
                     title: "Language",
                     icon: Assets.icons.iconsaxLanguageCircle.svg(),
                     onTap: () {},
+                    showArrow: false,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      LangButton(text: 'English'),
-                      LangButton(text: 'Arabic'),
-                    ],
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //   children: const [
+                  //     LangButton(text: 'English', isSelected: true),
+                  //     LangButton(text: 'Arabic'),
+                  //   ],
+                  // ),
+                  LanguageSelector(),
                 ],
               ),
               SizedBox(height: 24),

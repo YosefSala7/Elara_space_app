@@ -1,38 +1,31 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:space_app/core/app_colors.dart';
+import 'package:glass/glass.dart';
 
 class SettingsCard extends StatelessWidget {
-  const SettingsCard({super.key, required this.children});
+  const SettingsCard({
+    super.key,
+    required this.children,
+    this.effectEnabled = true,
+    this.liquid = false,
+  });
 
   final List<Widget> children;
+  final bool effectEnabled;
+  final bool liquid;
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(30),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
-        child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                AppColors.whiteColor.withValues(alpha: 0.10),
-                AppColors.whiteColor.withValues(alpha: 0.03),
-              ],
-            ),
-            borderRadius: BorderRadius.circular(30),
-            border: Border.all(
-              color: AppColors.whiteColor.withValues(alpha: 0.12),
-            ),
-          ),
-          child: Column(children: children),
-        ),
-      ),
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      child: Column(children: children),
+    ).asGlass(
+      enabled: effectEnabled,
+      blurX: 4,
+      blurY: 4,
+      tintColor: Colors.white.withValues(alpha: 0.12),
+      clipBorderRadius: BorderRadius.circular(30),
+      frosted: false,
     );
   }
 }

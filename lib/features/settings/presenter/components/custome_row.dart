@@ -4,12 +4,15 @@ import 'package:space_app/core/app_colors.dart';
 class CustomeRow extends StatelessWidget {
   final String title;
   final Widget icon;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
+  final bool showArrow;
+
   const CustomeRow({
     super.key,
     required this.title,
     required this.icon,
-    required this.onTap,
+    this.onTap,
+    this.showArrow = true,
   });
 
   @override
@@ -18,7 +21,7 @@ class CustomeRow extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(10),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.symmetric(vertical: 8),
         child: Row(
           children: [
             CircleAvatar(
@@ -26,7 +29,7 @@ class CustomeRow extends StatelessWidget {
               radius: 20,
               child: icon,
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Expanded(
               child: Text(
                 title,
@@ -37,7 +40,8 @@ class CustomeRow extends StatelessWidget {
                 ),
               ),
             ),
-            Icon(Icons.chevron_right, color: AppColors.iconColor),
+            if (showArrow)
+              Icon(Icons.chevron_right, color: AppColors.iconColor),
           ],
         ),
       ),
