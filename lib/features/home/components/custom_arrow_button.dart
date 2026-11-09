@@ -12,8 +12,6 @@ class CustomArrowButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Bounceable(
-      duration: Duration(milliseconds: 70),
-      scaleFactor: 0.6,
       onTap: () {
         onTap();
       },
@@ -30,7 +28,7 @@ class CustomArrowButton extends StatelessWidget {
             frosted: true,
             blurX: 20,
             blurY: 20,
-                        
+            
           ),
     );
   }

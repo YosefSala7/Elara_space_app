@@ -5,6 +5,7 @@ import 'package:space_app/core/components/background.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
 import 'package:space_app/features/home/components/custom_arrow_button.dart';
 import 'package:space_app/features/home/data/models/planet_model.dart';
+import 'package:space_app/features/planet%20info/screens/planet_info.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -34,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: .center,
-              spacing: 20,
+              spacing: 40,
               children: [
                 Text("Explore", style: textTheme.headlineSmall),
                 Align(
@@ -65,13 +66,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   enableShadow: false,
                   itemBuilder: (context, index) {
                     return OpenContainer(
-                      openBuilder: (context, action) => Placeholder(),
+                      openBuilder: (context, action) => PlanetInfo(planet: planets[index]),
                       closedBuilder: (context, action) => planets[index].img,
                       closedShape: CircleBorder(side: BorderSide.none),
                       closedColor: Colors.transparent,
+                      openColor: Colors.transparent,
+                      transitionDuration: Duration(milliseconds: 500),
                       closedElevation: 0,
-
-
                     );
                   },
                 ),
