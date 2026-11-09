@@ -18,8 +18,63 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/Arrow - Left.svg
+  SvgGenImage get arrowLeft =>
+      const SvgGenImage('assets/icons/Arrow - Left.svg');
+
+  /// File path: assets/icons/Arrow - Right.svg
+  SvgGenImage get arrowRight =>
+      const SvgGenImage('assets/icons/Arrow - Right.svg');
+
   /// Directory path: assets/icons/navbar
   $AssetsIconsNavbarGen get navbar => const $AssetsIconsNavbarGen();
+
+  /// List of all assets
+  List<SvgGenImage> get values => [arrowLeft, arrowRight];
+}
+
+class $AssetsImgsGen {
+  const $AssetsImgsGen();
+
+  /// File path: assets/imgs/earth.png
+  AssetGenImage get earth => const AssetGenImage('assets/imgs/earth.png');
+
+  /// File path: assets/imgs/jupiter.png
+  AssetGenImage get jupiter => const AssetGenImage('assets/imgs/jupiter.png');
+
+  /// File path: assets/imgs/mars.png
+  AssetGenImage get mars => const AssetGenImage('assets/imgs/mars.png');
+
+  /// File path: assets/imgs/mercury.png
+  AssetGenImage get mercury => const AssetGenImage('assets/imgs/mercury.png');
+
+  /// File path: assets/imgs/neptune.png
+  AssetGenImage get neptune => const AssetGenImage('assets/imgs/neptune.png');
+
+  /// File path: assets/imgs/saturn.png
+  AssetGenImage get saturn => const AssetGenImage('assets/imgs/saturn.png');
+
+  /// File path: assets/imgs/sun.png
+  AssetGenImage get sun => const AssetGenImage('assets/imgs/sun.png');
+
+  /// File path: assets/imgs/uranus.png
+  AssetGenImage get uranus => const AssetGenImage('assets/imgs/uranus.png');
+
+  /// File path: assets/imgs/venus.png
+  AssetGenImage get venus => const AssetGenImage('assets/imgs/venus.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    earth,
+    jupiter,
+    mars,
+    mercury,
+    neptune,
+    saturn,
+    sun,
+    uranus,
+    venus,
+  ];
 }
 
 class $AssetsLottiesGen {
@@ -45,35 +100,6 @@ class $AssetsIconsNavbarGen {
 
   /// Directory path: assets/icons/navbar/Broken
   $AssetsIconsNavbarBrokenGen get broken => const $AssetsIconsNavbarBrokenGen();
-
-  /// File path: assets/icons/navbar/iconsax-ai-fuel-tank.svg
-  SvgGenImage get iconsaxAiFuelTank =>
-      const SvgGenImage('assets/icons/navbar/iconsax-ai-fuel-tank.svg');
-
-  /// File path: assets/icons/navbar/iconsax-ai-record-video.svg
-  SvgGenImage get iconsaxAiRecordVideo =>
-      const SvgGenImage('assets/icons/navbar/iconsax-ai-record-video.svg');
-
-  /// File path: assets/icons/navbar/iconsax-document-text.svg
-  SvgGenImage get iconsaxDocumentText =>
-      const SvgGenImage('assets/icons/navbar/iconsax-document-text.svg');
-
-  /// File path: assets/icons/navbar/iconsax-enhance-user-ai.svg
-  SvgGenImage get iconsaxEnhanceUserAi =>
-      const SvgGenImage('assets/icons/navbar/iconsax-enhance-user-ai.svg');
-
-  /// File path: assets/icons/navbar/iconsax-home.svg
-  SvgGenImage get iconsaxHome =>
-      const SvgGenImage('assets/icons/navbar/iconsax-home.svg');
-
-  /// List of all assets
-  List<SvgGenImage> get values => [
-    iconsaxAiFuelTank,
-    iconsaxAiRecordVideo,
-    iconsaxDocumentText,
-    iconsaxEnhanceUserAi,
-    iconsaxHome,
-  ];
 }
 
 class $AssetsIconsNavbarBoldGen {
@@ -132,6 +158,7 @@ class $AssetsIconsNavbarBrokenGen {
 
 abstract final class Assets {
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsImgsGen imgs = $AssetsImgsGen();
   static const $AssetsLottiesGen lotties = $AssetsLottiesGen();
 }
 

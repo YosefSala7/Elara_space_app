@@ -6,7 +6,8 @@ abstract class AppThemes{
   static ThemeData appTheme = ThemeData(
     scaffoldBackgroundColor: Colors.transparent,
     textTheme: TextTheme(
-      labelSmall: TextStyle(color: AppColors.primary,fontFamily: FontFamily.spaceGrotesk)
+      labelSmall: TextStyle(color: AppColors.primary,fontFamily: FontFamily.spaceGrotesk),
+      headlineSmall: TextStyle(color: AppColors.white,fontFamily: FontFamily.spaceGrotesk,fontWeight: .bold)
     )
   );
 }
