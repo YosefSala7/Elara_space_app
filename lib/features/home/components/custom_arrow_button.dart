@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
-import 'package:glass/glass.dart';
+import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
 
@@ -18,20 +18,30 @@ class CustomArrowButton extends StatelessWidget {
         onTap();
       },
       child:
-          Container(
+          LiquidGlassLayer(
+        settings: LiquidGlassSettings.ios27Clear(
+          
+        ),
+        child: LiquidGlass(
+          shape: LiquidRoundedSuperellipse(borderRadius: 50),
+          child: Container(
             padding: EdgeInsets.all(12),
-
-            decoration: ShapeDecoration(shape: CircleBorder()),
             child: direction == "left"
-                ? Assets.icons.arrowLeft.svg(colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn))
-                : Assets.icons.arrowRight.svg(colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn)),
-          ).asGlass(
-            clipBorderRadius: BorderRadius.circular(50),
-            frosted: true,
-            blurX: 20,
-            blurY: 20,
-                        
+                ? Assets.icons.arrowLeft.svg(
+                    colorFilter: ColorFilter.mode(
+                      AppColors.primary,
+                      BlendMode.srcIn,
+                    ),
+                  )
+                : Assets.icons.arrowRight.svg(
+                    colorFilter: ColorFilter.mode(
+                      AppColors.primary,
+                      BlendMode.srcIn,
+                    ),
+                  ),
           ),
+        ),
+      ),
     );
   }
 }
