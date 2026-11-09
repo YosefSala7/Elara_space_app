@@ -15,11 +15,18 @@ import 'package:lottie/lottie.dart' as _lottie;
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/age-range.png
+  AssetGenImage get ageRange =>
+      const AssetGenImage('assets/icons/age-range.png');
+
   /// File path: assets/icons/image.png
   AssetGenImage get image => const AssetGenImage('assets/icons/image.png');
 
+  /// File path: assets/icons/scale.png
+  AssetGenImage get scale => const AssetGenImage('assets/icons/scale.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [image];
+  List<AssetGenImage> get values => [ageRange, image, scale];
 }
 
 class $AssetsLottiesGen {

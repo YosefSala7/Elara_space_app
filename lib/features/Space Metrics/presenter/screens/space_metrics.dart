@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:glass/glass.dart';
+import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/components/background.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
+import 'package:space_app/features/Space%20Metrics/presenter/components/custom_text_field.dart';
 
 class SpaceMetrics extends StatelessWidget {
   const SpaceMetrics({super.key});
@@ -13,31 +16,72 @@ class SpaceMetrics extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           spacing: 30,
-          crossAxisAlignment: .center,
+          crossAxisAlignment: .start,
 
           children: [
-            Row(
-              children: [
-                Spacer(),
-                Text(
-                  "Space Metrics",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: .w500,
-                    color: Color.fromARGB(255, 255, 254, 254),
-                    fontFamily: FontFamily.audiowide,
-                  ),
+            Center(
+              child: Text(
+                textAlign: .center,
+                "Space Metrics",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: .w500,
+                  color: AppColors.white,
+                  fontFamily: FontFamily.audiowide,
                 ),
-                Spacer(),
-              ],
+              ),
             ),
-            Container(
-              padding: EdgeInsets.all(3),
-              alignment: .center,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(16),color: Colors.blue),
-              width: 155,
-              height: 40,
-              child: TextField(decoration: InputDecoration(icon: Assets.icons.image.image(), hintText: "Weight",border: .none)),
+            Text(
+              textAlign: .justify,
+              "Your Normal information :",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: .w500,
+                color: AppColors.white,
+                fontFamily: FontFamily.audiowide,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(3.0),
+              child: Row(
+                children: [
+                  CustomTextField(
+                    text: "Weight",
+                    img: Assets.icons.scale.image(width: 16),
+                  ),
+                  Spacer(),
+                  CustomTextField(
+                    text: "Age",
+                    img: Assets.icons.ageRange.image(width: 16),
+                  ),
+                ],
+              ),
+            ),
+            Text(
+              textAlign: .start,
+              "Your Information in Space:",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: .w500,
+                color: AppColors.white,
+                fontFamily: FontFamily.audiowide,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(3.0),
+              child: Row(
+                children: [
+                  CustomTextField(
+                    text: "Weight",
+                    img: Assets.icons.scale.image(width: 16),
+                  ),
+                  Spacer(),
+                  CustomTextField(
+                    text: "Age",
+                    img: Assets.icons.ageRange.image(width: 16),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
