@@ -477,14 +477,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.0"
-  liquid_glass_bottom_navbar_plus:
-    dependency: "direct main"
-    description:
-      name: liquid_glass_bottom_navbar_plus
-      sha256: "5ad52706718dc8e8f17e6808b1fe2095f6fb7efb05e4c3b57ca0a58b4109d630"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.1"
   liquid_glass_renderer:
     dependency: "direct main"
     description:

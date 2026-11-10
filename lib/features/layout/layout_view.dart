@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:liquid_glass_bottom_navbar_plus/liquid_glass_bottom_navbar_plus.dart'; 
+import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:space_app/core/app_colors.dart';
-import 'package:space_app/core/components/background.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/features/home/presenter/screens/home_screen.dart';
 
@@ -19,212 +18,233 @@ class _LayoutViewState extends State<LayoutView> {
     return Stack(
       children: [
         HomeScreen(),
-        Align(
-          alignment: .bottomCenter,
-          child: LiquidGlassBottomBar(
-                height: 65,
-
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                selectedIndex: _index,
-                onDestinationSelected: (i) => setState(() => _index = i),
-                swipeToSelect: true,
-                settings: LiquidGlassSettings(
-                  variant: GlassVariant.forcedFallback,
-
-                  // thickness: 1.0,
-                  blur: 20.0,
-                  // refractiveIndex: 1.0,
-                  // lightAngle: 0.0,
-                  // lightIntensity: 0.5,
-                  // ambientStrength: 0.0,
-                  glassColor: const Color.fromARGB(45, 255, 255, 255),
-                  // saturation: 1.2,
-                  // chromaticAberration: 0.3,
-                  // outlineIntensity: 0.4,
-                  // blend: 20.0,
-                  // tiltHighlight: true,
+        SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Align(
+              alignment: .bottomCenter,
+              child: LiquidGlassLayer(
+                settings: LiquidGlassSettings.ios27Regular(
+                  brightness: Brightness.dark,
                 ),
-                theme: LiquidGlassBarTheme(
-                  labelStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
-                    fontSize: 10,
-                    fontWeight: .w500,
-                  ),
-                  selectedLabelStyle: Theme.of(context).textTheme.labelSmall!
-                      .copyWith(fontSize: 10, fontWeight: .w700),
-                  iconColor: Colors.grey,
-                  selectedIconColor: AppColors.primary,
-                  pillColor: AppColors.primary.withAlpha(30),
-                ),
-                items: [
-                  LiquidGlassBarItem(
-                    icon: Assets.icons.navbar.broken.home.svg(
-                      colorFilter: ColorFilter.mode(
-                        Colors.grey,
-                        BlendMode.srcIn,
+                child: LiquidGlass(
+                  shape: LiquidRoundedSuperellipse(borderRadius: 40),
+                  child: Padding(
+                    padding: const EdgeInsets.all(3.0),
+                    child: BottomNavigationBar(
+                      currentIndex: _index,
+                      onTap: (index) {
+                        setState(() {
+                          _index = index;
+                        });
+                      },
+                      type: BottomNavigationBarType.fixed,
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                      selectedItemColor: AppColors.primary,
+                      unselectedItemColor: Colors.grey,
+                      showUnselectedLabels: false,
+                      selectedLabelStyle: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 10,
                       ),
-                    ),
-                    selectedIcon: Assets.icons.navbar.bold.home.svg(
-                      colorFilter: ColorFilter.mode(
-                        AppColors.primary,
-                        BlendMode.srcIn,
+                      unselectedLabelStyle: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12,
                       ),
-                    ),
-                    label: "Home",
-                  ),
-                  LiquidGlassBarItem(
-                    icon: Assets.icons.navbar.broken.measuringTape.image(
-                      width: 20,
-                      color: Colors.grey,
-                    ),
-                    selectedIcon: Assets.icons.navbar.bold.measuringTape.image(
-                      width: 20,
-                      color: AppColors.primary,
-                    ),
-                    label: "Metrics",
-                  ),
-                  LiquidGlassBarItem(
-                    icon: Assets.icons.navbar.broken.videos.image(
-                      width: 20,
-                      color: Colors.grey,
-                    ),
-                    selectedIcon: Assets.icons.navbar.bold.videos.image(
-                      width: 20,
-                      color: AppColors.primary,
-                    ),
-                    label: "Learn",
-                  ),
+                      items: [
+                        // 1. Home
+                        BottomNavigationBarItem(
+                          icon: SizedBox(
+                            height: 36,
+                            width: 50,
+                            child: Center(
+                              child: Assets.icons.navbar.broken.home.svg(
+                                colorFilter: const ColorFilter.mode(
+                                  Colors.grey,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
+                            ),
+                          ),
+                          activeIcon: SizedBox(
+                            height: 36,
+                            width: 50,
+                            child: Center(
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 6,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: AppColors.primary.withAlpha(60),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Assets.icons.navbar.bold.home.svg(
+                                  colorFilter: const ColorFilter.mode(
+                                    AppColors.primary,
+                                    BlendMode.srcIn,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          label: "Home",
+                        ),
 
-                  LiquidGlassBarItem(
-                    icon: Assets.icons.navbar.broken.paper.svg(
-                      colorFilter: ColorFilter.mode(
-                        Colors.grey,
-                        BlendMode.srcIn,
-                      ),
+                        // 2. Metrics
+                        BottomNavigationBarItem(
+                          icon: SizedBox(
+                            height: 36,
+                            width: 50,
+                            child: Center(
+                              child: Assets.icons.navbar.broken.measuringTape
+                                  .image(width: 20, color: Colors.grey),
+                            ),
+                          ),
+                          activeIcon: SizedBox(
+                            height: 36,
+                            width: 50,
+                            child: Center(
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 6,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: AppColors.primary.withAlpha(60),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Assets.icons.navbar.bold.measuringTape
+                                    .image(width: 20, color: AppColors.primary),
+                              ),
+                            ),
+                          ),
+                          label: "Metrics",
+                        ),
+
+                        // 3. Learn
+                        BottomNavigationBarItem(
+                          icon: SizedBox(
+                            height: 36,
+                            width: 50,
+                            child: Center(
+                              child: Assets.icons.navbar.broken.videos.image(
+                                width: 20,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                          activeIcon: SizedBox(
+                            height: 36,
+                            width: 50,
+                            child: Center(
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 6,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: AppColors.primary.withAlpha(60),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Assets.icons.navbar.bold.videos.image(
+                                  width: 20,
+                                  color: AppColors.primary,
+                                ),
+                              ),
+                            ),
+                          ),
+                          label: "Learn",
+                        ),
+
+                        // 4. Quizes
+                        BottomNavigationBarItem(
+                          icon: SizedBox(
+                            height: 36,
+                            width: 50,
+                            child: Center(
+                              child: Assets.icons.navbar.broken.paper.svg(
+                                colorFilter: const ColorFilter.mode(
+                                  Colors.grey,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
+                            ),
+                          ),
+                          activeIcon: SizedBox(
+                            height: 36,
+                            width: 50,
+                            child: Center(
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 6,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: AppColors.primary.withAlpha(60),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Assets.icons.navbar.bold.paper.svg(
+                                  colorFilter: const ColorFilter.mode(
+                                    AppColors.primary,
+                                    BlendMode.srcIn,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          label: "Quizes",
+                        ),
+
+                        // 5. Settings
+                        BottomNavigationBarItem(
+                          icon: SizedBox(
+                            height: 36,
+                            width: 50,
+                            child: Center(
+                              child: Assets.icons.navbar.broken.setting.svg(
+                                colorFilter: const ColorFilter.mode(
+                                  Colors.grey,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
+                            ),
+                          ),
+                          activeIcon: SizedBox(
+                            height: 36,
+                            width: 50,
+                            child: Center(
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 6,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: AppColors.primary.withAlpha(60),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Assets.icons.navbar.bold.setting.svg(
+                                  colorFilter: const ColorFilter.mode(
+                                    AppColors.primary,
+                                    BlendMode.srcIn,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          label: "Settings",
+                        ),
+                      ],
                     ),
-                    selectedIcon: Assets.icons.navbar.bold.paper.svg(
-                      colorFilter: ColorFilter.mode(
-                        AppColors.primary,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    label: "Quizes",
                   ),
-                  LiquidGlassBarItem(
-                    icon: Assets.icons.navbar.broken.setting.svg(
-                      colorFilter: ColorFilter.mode(
-                        Colors.grey,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    selectedIcon: Assets.icons.navbar.bold.setting.svg(
-                      colorFilter: ColorFilter.mode(
-                        AppColors.primary,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    label: "Home",
-                  ),
-                ],
+                ),
               ),
+            ),
+          ),
         ),
       ],
     );
   }
 }
 
-// LiquidGlassBottomBar(
-//   height: 65,
-
-//   margin: EdgeInsets.symmetric(horizontal: 20),
-//   selectedIndex: _index,
-//   onDestinationSelected: (i) => setState(() => _index = i),
-//   swipeToSelect: true,
-//   settings: LiquidGlassSettings(
-//     variant: GlassVariant.forcedFallback,
-
-//     thickness: 1.0,
-//     blur: 20.0,
-//     refractiveIndex: 1.0,
-//     lightAngle: 0.0,
-//     lightIntensity: 0.5,
-//     ambientStrength: 0.0,
-//     glassColor: const Color.fromARGB(15, 255, 255, 255),
-//     saturation: 1.2,
-//     chromaticAberration: 0.3,
-//     outlineIntensity: 0.4,
-//     blend: 20.0,
-//     tiltHighlight: true,
-//   ),
-//   theme: LiquidGlassBarTheme(
-//     labelStyle: Theme.of(
-//       context,
-//     ).textTheme.labelSmall!.copyWith(fontSize: 10, fontWeight: .w500),
-//     selectedLabelStyle: Theme.of(
-//       context,
-//     ).textTheme.labelSmall!.copyWith(fontSize: 10, fontWeight: .w700),
-//     iconColor: Colors.grey,
-//     selectedIconColor: AppColors.primary,
-//     pillColor: AppColors.primary.withAlpha(30),
-//   ),
-//   items: [
-//     LiquidGlassBarItem(
-//       icon: Assets.icons.navbar.broken.home.svg(
-//         colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
-//       ),
-//       selectedIcon: Assets.icons.navbar.bold.home.svg(
-//         colorFilter: ColorFilter.mode(
-//           AppColors.primary,
-//           BlendMode.srcIn,
-//         ),
-//       ),
-//       label: "Home",
-//     ),
-//     LiquidGlassBarItem(
-//       icon: Assets.icons.navbar.broken.measuringTape.image(
-//         width: 20,
-//         color: Colors.grey,
-//       ),
-//       selectedIcon: Assets.icons.navbar.bold.measuringTape.image(
-//         width: 20,
-//         color: AppColors.primary,
-//       ),
-//       label: "Metrics",
-//     ),
-//     LiquidGlassBarItem(
-//       icon: Assets.icons.navbar.broken.videos.image(
-//         width: 20,
-//         color: Colors.grey,
-//       ),
-//       selectedIcon: Assets.icons.navbar.bold.videos.image(
-//         width: 20,
-//         color: AppColors.primary,
-//       ),
-//       label: "Learn",
-//     ),
-
-//     LiquidGlassBarItem(
-//       icon: Assets.icons.navbar.broken.paper.svg(
-//         colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
-//       ),
-//       selectedIcon: Assets.icons.navbar.bold.paper.svg(
-//         colorFilter: ColorFilter.mode(
-//           AppColors.primary,
-//           BlendMode.srcIn,
-//         ),
-//       ),
-//       label: "Quizes",
-//     ),
-//     LiquidGlassBarItem(
-//       icon: Assets.icons.navbar.broken.setting.svg(
-//         colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
-//       ),
-//       selectedIcon: Assets.icons.navbar.bold.setting.svg(
-//         colorFilter: ColorFilter.mode(
-//           AppColors.primary,
-//           BlendMode.srcIn,
-//         ),
-//       ),
-//       label: "Home",
-//     ),
-//   ],
-// ),
