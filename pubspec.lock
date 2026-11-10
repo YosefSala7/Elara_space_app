@@ -492,6 +492,14 @@ packages:
       sha256: "5a57a498fffd29eb8373695346ae423e4d3879edf72335db57d0e31ff74ae54f"
       url: "https://pub.dev"
     source: hosted
+    version: "0.0.1"
+  liquid_glass_renderer:
+    dependency: "direct main"
+    description:
+      name: liquid_glass_renderer
+      sha256: "5a57a498fffd29eb8373695346ae423e4d3879edf72335db57d0e31ff74ae54f"
+      url: "https://pub.dev"
+    source: hosted
     version: "1.0.0-dev.2"
   logging:
     dependency: transitive
