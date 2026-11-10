@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:glass/glass.dart';
+
 import 'package:space_app/core/app_colors.dart';
-import 'package:space_app/core/gen/assets.gen.dart';
+
 import 'package:space_app/core/gen/fonts.gen.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -26,6 +27,13 @@ class CustomTextField extends StatelessWidget {
             ),
           ),
         ),
+        // LiquidGlassLayer(
+        //   settings: LiquidGlassSettings.ios27Regular(
+        //     brightness: MediaQuery.platformBrightnessOf(context),
+        //   ),
+        //   child: LiquidGlass(
+        //     shape: LiquidRoundedSuperellipse(borderRadius: 28),
+        //     child:
         Container(
           padding: EdgeInsets.all(3),
           alignment: Alignment.center,
@@ -44,10 +52,9 @@ class CustomTextField extends StatelessWidget {
               ),
             ),
           ),
-        ).asGlass(
-          clipBorderRadius: .circular(16),
-          tintColor: Colors.white.withValues(alpha: 0.09),
-        ),
+        ).asGlass(clipBorderRadius: BorderRadius.circular(16)),
+        //   ),
+        // ),
       ],
     );
   }

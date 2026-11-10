@@ -26,6 +26,10 @@ class $AssetsIconsGen {
   AssetGenImage get ageRange7187713 =>
       const AssetGenImage('assets/icons/age-range_7187713.png');
 
+  /// File path: assets/icons/fi-rr-calendar.svg
+  SvgGenImage get fiRrCalendar =>
+      const SvgGenImage('assets/icons/fi-rr-calendar.svg');
+
   /// File path: assets/icons/iconsax-weight.svg
   SvgGenImage get iconsaxWeight =>
       const SvgGenImage('assets/icons/iconsax-weight.svg');
@@ -33,10 +37,67 @@ class $AssetsIconsGen {
   /// File path: assets/icons/scale.png
   AssetGenImage get scale => const AssetGenImage('assets/icons/scale.png');
 
-  /// File path: assets/icons/scale.png
+  /// List of all assets
+  List<dynamic> get values => [
+    ageRange,
+    ageRange7187713,
+    fiRrCalendar,
+    iconsaxWeight,
+    scale,
+  ];
+}
+
+class $AssetsImgsGen {
+  const $AssetsImgsGen();
+
+  /// File path: assets/imgs/Frame 1.png
+  AssetGenImage get frame1 => const AssetGenImage('assets/imgs/Frame 1.png');
+
+  /// File path: assets/imgs/Rectangle 4.png
+  AssetGenImage get rectangle4 =>
+      const AssetGenImage('assets/imgs/Rectangle 4.png');
+
+  /// File path: assets/imgs/earth.png
+  AssetGenImage get earth => const AssetGenImage('assets/imgs/earth.png');
+
+  /// File path: assets/imgs/jupiter.png
+  AssetGenImage get jupiter => const AssetGenImage('assets/imgs/jupiter.png');
+
+  /// File path: assets/imgs/mars.png
+  AssetGenImage get mars => const AssetGenImage('assets/imgs/mars.png');
+
+  /// File path: assets/imgs/mercury.png
+  AssetGenImage get mercury => const AssetGenImage('assets/imgs/mercury.png');
+
+  /// File path: assets/imgs/neptune.png
+  AssetGenImage get neptune => const AssetGenImage('assets/imgs/neptune.png');
+
+  /// File path: assets/imgs/saturn.png
+  AssetGenImage get saturn => const AssetGenImage('assets/imgs/saturn.png');
+
+  /// File path: assets/imgs/sun.png
+  AssetGenImage get sun => const AssetGenImage('assets/imgs/sun.png');
+
+  /// File path: assets/imgs/uranus.png
+  AssetGenImage get uranus => const AssetGenImage('assets/imgs/uranus.png');
+
+  /// File path: assets/imgs/venus.png
+  AssetGenImage get venus => const AssetGenImage('assets/imgs/venus.png');
 
   /// List of all assets
-  List<dynamic> get values => [ageRange, ageRange7187713, iconsaxWeight, scale];
+  List<AssetGenImage> get values => [
+    frame1,
+    rectangle4,
+    earth,
+    jupiter,
+    mars,
+    mercury,
+    neptune,
+    saturn,
+    sun,
+    uranus,
+    venus,
+  ];
 }
 
 class $AssetsLottiesGen {
@@ -56,6 +117,7 @@ class $AssetsLottiesGen {
 
 abstract final class Assets {
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsImgsGen imgs = $AssetsImgsGen();
   static const $AssetsLottiesGen lotties = $AssetsLottiesGen();
 }
 
