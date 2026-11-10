@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:space_app/core/app_colors.dart';
+import 'package:space_app/core/gen/fonts.gen.dart';
 
 class CustomeRow extends StatelessWidget {
   final String title;
@@ -36,7 +37,7 @@ class CustomeRow extends StatelessWidget {
                 style: TextStyle(
                   color: AppColors.whiteColor,
                   fontSize: 16,
-                  fontFamily: "SpaceGrotesk",
+                  fontFamily: FontFamily.spaceGrotesk,
                 ),
               ),
             ),

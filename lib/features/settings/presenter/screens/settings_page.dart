@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/components/background.dart';
+import 'package:space_app/core/components/branding.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
+import 'package:space_app/core/gen/fonts.gen.dart';
 import 'package:space_app/features/settings/presenter/components/custome_row.dart';
 import 'package:space_app/features/settings/presenter/components/lang_selector.dart';
 import 'package:space_app/features/settings/presenter/components/settings_card.dart';
@@ -18,16 +20,14 @@ class SettingsPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: .start,
-            // child: Assets.icons.iconsaxSaveMinus.svg(
-            //   colorFilter: ColorFilter.mode(Colors.blue, BlendMode.srcIn),
-            // ),
+
             children: [
               Text(
                 "Settings",
                 style: TextStyle(
                   color: AppColors.whiteColor,
                   fontSize: 24,
-                  fontWeight: .bold,
+                  fontFamily: FontFamily.audiowide,
                 ),
               ),
               SizedBox(height: 20),
@@ -40,13 +40,7 @@ class SettingsPage extends StatelessWidget {
                     onTap: () {},
                     showArrow: false,
                   ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //   children: const [
-                  //     LangButton(text: 'English', isSelected: true),
-                  //     LangButton(text: 'Arabic'),
-                  //   ],
-                  // ),
+
                   LanguageSelector(),
                 ],
               ),
@@ -86,25 +80,7 @@ class SettingsPage extends StatelessWidget {
               ),
 
               SizedBox(height: 24),
-              Center(
-                child: Column(
-                  children: [
-                    Assets.images.worldwide11.image(width: 50, height: 50),
-                    Text(
-                      "ELARA",
-                      style: TextStyle(color: AppColors.whiteColor),
-                    ),
-                    SizedBox(height: 6),
-                    Text(
-                      "By: Three dots",
-                      style: TextStyle(
-                        color: AppColors.cascaraColor,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              Center(child: Branding()),
             ],
           ),
         ),
