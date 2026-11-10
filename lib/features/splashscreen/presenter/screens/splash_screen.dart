@@ -3,6 +3,8 @@ import 'package:space_app/core/components/background.dart';
 import 'package:space_app/core/components/branding.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
+import 'package:space_app/features/home/presenter/screens/home_screen.dart';
+import 'package:space_app/features/layout/layout_view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -22,10 +24,7 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     Future.delayed(Duration(seconds: 7), () {
       if (!mounted) return;
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => Scaffold(body: Placeholder())),
-      );
+      Navigator.pushReplacementNamed(context, LayoutView.layoutRoute);
     });
 
     _controller = AnimationController(
