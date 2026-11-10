@@ -23,11 +23,15 @@ class LangButton extends StatelessWidget {
         child: Bounceable(
           onTap: onTap,
           child: Container(
-            padding: .all(12),
+            padding: .symmetric(horizontal: 25, vertical: 10),
             decoration: BoxDecoration(
-              color: isSelected
-                  ? Colors.black.withValues(alpha: 0.35)
-                  : AppColors.white.withValues(alpha: 0.05),
+              border: Border.all(
+                color: isSelected ? AppColors.primary : Colors.transparent,
+                width: 1,
+              ),
+              color:
+                  Colors.black.withValues(alpha: 0.37),
+                  
               borderRadius: BorderRadius.circular(24),
             ),
             child: Text(

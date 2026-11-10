@@ -26,11 +26,48 @@ class $AssetsIconsGen {
   SvgGenImage get arrowRight =>
       const SvgGenImage('assets/icons/Arrow - Right.svg');
 
+  /// File path: assets/icons/Vector22.svg
+  SvgGenImage get vector22 => const SvgGenImage('assets/icons/Vector22.svg');
+
+  /// File path: assets/icons/iconsax-chart.svg
+  SvgGenImage get iconsaxChart =>
+      const SvgGenImage('assets/icons/iconsax-chart.svg');
+
+  /// File path: assets/icons/iconsax-language-circle.svg
+  SvgGenImage get iconsaxLanguageCircle =>
+      const SvgGenImage('assets/icons/iconsax-language-circle.svg');
+
+  /// File path: assets/icons/iconsax-message-bubble.svg
+  SvgGenImage get iconsaxMessageBubble =>
+      const SvgGenImage('assets/icons/iconsax-message-bubble.svg');
+
+  /// File path: assets/icons/iconsax-save-minus.svg
+  SvgGenImage get iconsaxSaveMinus =>
+      const SvgGenImage('assets/icons/iconsax-save-minus.svg');
+
+  /// File path: assets/icons/logout-svgrepo-com.svg
+  SvgGenImage get logoutSvgrepoCom =>
+      const SvgGenImage('assets/icons/logout-svgrepo-com.svg');
+
   /// Directory path: assets/icons/navbar
   $AssetsIconsNavbarGen get navbar => const $AssetsIconsNavbarGen();
 
+  /// File path: assets/icons/worldwide 1.svg
+  SvgGenImage get worldwide1 =>
+      const SvgGenImage('assets/icons/worldwide 1.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [arrowLeft, arrowRight];
+  List<SvgGenImage> get values => [
+    arrowLeft,
+    arrowRight,
+    vector22,
+    iconsaxChart,
+    iconsaxLanguageCircle,
+    iconsaxMessageBubble,
+    iconsaxSaveMinus,
+    logoutSvgrepoCom,
+    worldwide1,
+  ];
 }
 
 class $AssetsImgsGen {
