@@ -49,6 +49,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.13.1"
+  awesome_bottom_bar:
+    dependency: "direct main"
+    description:
+      name: awesome_bottom_bar
+      sha256: dd42e6767ae22cf5eb47695991e7a3f964ccba3b403a93837c20eb4f74e4ad0f
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.4"
   boolean_selector:
     dependency: transitive
     description:
@@ -477,11 +485,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.0"
-  liquid_glass_bottom_navbar_plus:
+  liquid_glass_renderer:
     dependency: "direct main"
     description:
-      name: liquid_glass_bottom_navbar_plus
-      sha256: "5ad52706718dc8e8f17e6808b1fe2095f6fb7efb05e4c3b57ca0a58b4109d630"
+      name: liquid_glass_renderer
+      sha256: "5a57a498fffd29eb8373695346ae423e4d3879edf72335db57d0e31ff74ae54f"
       url: "https://pub.dev"
     source: hosted
     version: "0.0.1"

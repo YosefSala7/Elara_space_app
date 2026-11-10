@@ -54,12 +54,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   controller: _pageController,
                   entryAnimationDuration: Duration(milliseconds: 100),
+
                   itemCount: planets.length,
                   elevation: 0,
                   itemWidth: 260,
                   itemHeight: 260,
                   scrollDirection: Axis.horizontal,
-                  nearCardSpacing: 100,
+                  nearCardSpacing: 140,
                   farCardSpacing: 120,
                   skewAngle: -0.3,
                   obscure: 0.4,
@@ -85,10 +86,21 @@ class _HomeScreenState extends State<HomeScreen> {
                       direction: "left",
                     ),
                     Spacer(),
-                    Text(
-                      planets[_currentPage].name,
-                      style: textTheme.headlineSmall!.copyWith(
-                        fontFamily: FontFamily.audiowide,
+                    PageTransitionSwitcher(
+                      duration: const Duration(milliseconds: 300),
+                      transitionBuilder:
+                          (child, primaryAnimation, secondaryAnimation) {
+                            return FadeThroughTransition(
+                              animation: primaryAnimation,
+                              secondaryAnimation: secondaryAnimation,
+                              fillColor: Colors.transparent,
+                              child: child,
+                            );
+                          },
+                      child: Text(
+                        planets[_currentPage].name,
+                        key: ValueKey<int>(_currentPage),
+                        style: textTheme.headlineSmall,
                       ),
                     ),
                     Spacer(),

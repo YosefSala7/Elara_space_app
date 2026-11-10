@@ -33,7 +33,7 @@ class PlanetModel {
 
 List<PlanetModel> planets = [
     PlanetModel(
-      img: Assets.imgs.earth.image(),
+      img: Assets.imgs.earth.image(fit: BoxFit.cover),
       name: "Earth",
       title: "Earth: Our Blue Marble",
       about: "Earth is the only known planet in the universe that supports life. Its unique combination of factors, including liquid water, a breathable atmosphere, and a suitable distance from the Sun, has created the ideal conditions for the development of complex organisms. Earth's magnetic field protects it from harmful solar radiation, and its atmosphere helps to regulate temperature and weather patterns.",
@@ -46,7 +46,7 @@ List<PlanetModel> planets = [
       surfaceArea: "5.10 × 10⁸",
     ),
     PlanetModel(
-      img: Assets.imgs.jupiter.image(),
+      img: Assets.imgs.jupiter.image(fit: BoxFit.cover),
       name: "Jupiter",
       title: "Jupiter: The King of Planets",
       about: "Jupiter is the largest planet in our solar system, more than twice as massive as all the other planets combined. Jupiter's iconic Great Red Spot is a giant storm bigger than Earth that has raged for hundreds of years. It has a faint ring system and dozens of moons, including Europa, which may harbor an underground ocean.",
@@ -98,7 +98,7 @@ List<PlanetModel> planets = [
       surfaceArea: "7.61 × 10⁹",
     ),
     PlanetModel(
-      img: Assets.imgs.saturn.image(),
+      img: Assets.imgs.saturn.image(fit: BoxFit.fitHeight),
       name: "Saturn",
       title: "Saturn: The Ringed Jewel",
       about: "Saturn is the sixth planet from the Sun and the second largest in the solar system. Adorned with a dazzling, complex system of icy rings, Saturn is unique in our solar system. The other giant planets have rings, but none are as spectacular as Saturn's.",

@@ -21,7 +21,6 @@ dependencies:
   flutter_gen: ^5.15.0
   lottie: ^3.8.2
   glass: ^2.3.2
-  liquid_glass_bottom_navbar_plus: ^0.0.1
   coverflow_carousel: ^2.1.0
   animations: ^3.0.0
   liquid_glass_renderer: ^1.0.0-dev.2
