@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:space_app/core/app_colors.dart';
 
 class LangButton extends StatelessWidget {
@@ -14,21 +15,27 @@ class LangButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: .all(12),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? Colors.black.withValues(alpha: 0.35)
-              : AppColors.whiteColor.withValues(alpha: 0.05),
-          borderRadius: BorderRadius.circular(24),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: AppColors.whiteColor,
-            fontFamily: "SpaceGrotesk",
+    return LiquidGlassLayer(
+      settings: LiquidGlassSettings.ios27RegularDark(),
+      child: LiquidGlass(
+        shape: LiquidRoundedSuperellipse(borderRadius: 20),
+        child: GestureDetector(
+          onTap: onTap,
+          child: Container(
+            padding: .all(12),
+            decoration: BoxDecoration(
+              color: isSelected
+                  ? Colors.black.withValues(alpha: 0.35)
+                  : AppColors.whiteColor.withValues(alpha: 0.05),
+              borderRadius: BorderRadius.circular(24),
+            ),
+            child: Text(
+              text,
+              style: TextStyle(
+                color: AppColors.whiteColor,
+                fontFamily: "SpaceGrotesk",
+              ),
+            ),
           ),
         ),
       ),
