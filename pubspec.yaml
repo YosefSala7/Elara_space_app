@@ -24,6 +24,8 @@ dependencies:
   coverflow_carousel: ^2.1.0
   animations: ^3.0.0
   liquid_glass_renderer: ^1.0.0-dev.2
+
+  flutter_animate:
   
 
 dev_dependencies:
@@ -47,6 +49,7 @@ flutter:
   uses-material-design: true
 
   assets:
+
     - assets/imgs/
     - assets/lotties/
     - assets/icons/
