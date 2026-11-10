@@ -19,9 +19,7 @@ class CustomArrowButton extends StatelessWidget {
       },
       child:
           LiquidGlassLayer(
-        settings: LiquidGlassSettings.ios27Clear(
-          
-        ),
+        settings: LiquidGlassSettings.ios27Clear(),
         child: LiquidGlass(
           shape: LiquidRoundedSuperellipse(borderRadius: 50),
           child: Container(

@@ -32,6 +32,8 @@ class _LayoutViewState extends State<LayoutView> {
                   child: Padding(
                     padding: const EdgeInsets.all(3.0),
                     child: BottomNavigationBar(
+
+                      
                       currentIndex: _index,
                       onTap: (index) {
                         setState(() {
@@ -55,6 +57,7 @@ class _LayoutViewState extends State<LayoutView> {
                       items: [
                         // 1. Home
                         BottomNavigationBarItem(
+                          
                           icon: SizedBox(
                             height: 36,
                             width: 50,

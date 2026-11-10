@@ -24,6 +24,7 @@ dependencies:
   coverflow_carousel: ^2.1.0
   animations: ^3.0.0
   liquid_glass_renderer: ^1.0.0-dev.2
+  awesome_bottom_bar: ^1.2.4
   
 
 dev_dependencies:
