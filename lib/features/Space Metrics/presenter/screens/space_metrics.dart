@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:glass/glass.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/components/background.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
@@ -46,7 +47,7 @@ class SpaceMetrics extends StatelessWidget {
                 children: [
                   CustomTextField(
                     text: "Weight",
-                    img:Assets.icons.iconsaxWeight.svg(),
+                    img: Assets.icons.scale.image(width: 16),
                   ),
                   Spacer(),
                   CustomTextField(

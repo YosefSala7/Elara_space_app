@@ -33,6 +33,8 @@ class $AssetsIconsGen {
   /// File path: assets/icons/scale.png
   AssetGenImage get scale => const AssetGenImage('assets/icons/scale.png');
 
+  /// File path: assets/icons/scale.png
+
   /// List of all assets
   List<dynamic> get values => [ageRange, ageRange7187713, iconsaxWeight, scale];
 }
