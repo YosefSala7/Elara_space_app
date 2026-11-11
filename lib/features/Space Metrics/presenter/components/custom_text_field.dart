@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:glass/glass.dart';
+import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 
 import 'package:space_app/core/app_colors.dart';
 
@@ -27,34 +27,35 @@ class CustomTextField extends StatelessWidget {
             ),
           ),
         ),
-        // LiquidGlassLayer(
-        //   settings: LiquidGlassSettings.ios27Regular(
-        //     brightness: MediaQuery.platformBrightnessOf(context),
-        //   ),
-        //   child: LiquidGlass(
-        //     shape: LiquidRoundedSuperellipse(borderRadius: 28),
-        //     child:
-        Container(
-          padding: EdgeInsets.all(3),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
-          width: 155,
-          height: 40,
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: TextField(
-              cursorColor: AppColors.primary,
-              textAlignVertical: TextAlignVertical.center,
-              decoration: InputDecoration(
-                icon: img,
-                border: .none,
-                isDense: true,
+        LiquidGlassLayer(
+          settings: LiquidGlassSettings.ios27Regular(
+            brightness: MediaQuery.platformBrightnessOf(context),
+          ),
+          child: LiquidGlass(
+            shape: LiquidRoundedSuperellipse(borderRadius: 16),
+            child: Container(
+              padding: EdgeInsets.all(3),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              width: 155,
+              height: 40,
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: TextField(
+                  cursorColor: AppColors.primary,
+                  textAlignVertical: TextAlignVertical.center,
+                  decoration: InputDecoration(
+                    icon: img,
+                    border: .none,
+                    isDense: true,
+                  ),
+                ),
               ),
             ),
           ),
-        ).asGlass(clipBorderRadius: BorderRadius.circular(16)),
-        //   ),
-        // ),
+        ),
       ],
     );
   }
