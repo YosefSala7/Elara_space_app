@@ -3,6 +3,7 @@ import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:space_app/core/app_theme.dart';
 import 'package:space_app/features/home/presenter/screens/home_screen.dart';
 import 'package:space_app/features/layout/layout_view.dart';
+import 'package:space_app/features/learn/presenter/screens/space_academy_screen.dart';
 import 'package:space_app/features/settings/presenter/screens/settings_page.dart';
 import 'package:space_app/features/splashscreen/presenter/screens/splash_screen.dart';
 
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
         SplashScreen.splashRoute: (context) => SplashScreen(),
         HomeScreen.homeRoute: (context) => HomeScreen(),
         LayoutView.layoutRoute: (context) => LayoutView(),
-        SettingsPage.settingsRoutName: (context) => SettingsPage()
+        SettingsPage.settingsRoutName: (context) => SettingsPage(),
+        SpaceAcademyScreen.routeName :(context) => SpaceAcademyScreen()
       },
       debugShowCheckedModeBanner: false,
     );

@@ -3,6 +3,7 @@ import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/features/home/presenter/screens/home_screen.dart';
+import 'package:space_app/features/learn/presenter/screens/space_academy_screen.dart';
 import 'package:space_app/features/settings/presenter/screens/settings_page.dart';
 
 class LayoutView extends StatefulWidget {
@@ -17,9 +18,9 @@ class _LayoutViewState extends State<LayoutView> {
   List<Widget> screens = [
     HomeScreen(),
     const Center(child: Text("Metrics")),
-    const Center(child: Text("Learn")),
+    SpaceAcademyScreen(),
     const Center(child: Text("Quizes")),
-    SettingsPage()
+    SettingsPage(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -40,8 +41,6 @@ class _LayoutViewState extends State<LayoutView> {
                   child: Padding(
                     padding: const EdgeInsets.all(3.0),
                     child: BottomNavigationBar(
-
-                      
                       currentIndex: _index,
                       onTap: (index) {
                         setState(() {
@@ -65,7 +64,6 @@ class _LayoutViewState extends State<LayoutView> {
                       items: [
                         // 1. Home
                         BottomNavigationBarItem(
-                          
                           icon: SizedBox(
                             height: 36,
                             width: 50,
@@ -258,4 +256,3 @@ class _LayoutViewState extends State<LayoutView> {
     );
   }
 }
-
