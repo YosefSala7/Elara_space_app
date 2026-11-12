@@ -25,6 +25,7 @@ dependencies:
 
   flutter_animate:
   icons_launcher: ^3.1.0
+  smooth_page_indicator: ^3.0.0
   
 
 dev_dependencies:
