@@ -25,6 +25,8 @@ dependencies:
   animations: ^3.0.0
   liquid_glass_renderer: ^1.0.0-dev.2
   awesome_bottom_bar: ^1.2.4
+  supabase_flutter: ^2.18.3
+  dartz: ^0.10.1
   
 
 dev_dependencies:
