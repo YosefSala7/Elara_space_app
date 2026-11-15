@@ -13,6 +13,7 @@ import 'package:space_app/features/Space%20Metrics/presenter/components/custom_t
 import 'package:space_app/features/Space%20Metrics/presenter/components/share_card.dart';
 import 'package:space_app/features/Space%20Metrics/presenter/screens/planet_list.dart';
 
+
 class SpaceMetrics extends StatefulWidget {
   const SpaceMetrics({super.key});
 
@@ -143,7 +144,7 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
                       ),
 
                       // Planets
-                      const PlanetList(),
+                       PlanetList(),
 
                       // Space Information
                       Text(
