@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/components/background.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
-
 import 'package:space_app/features/Space%20Metrics/manager/metrics_cubit.dart';
 import 'package:space_app/features/Space%20Metrics/manager/metrics_states.dart';
-
 import 'package:space_app/features/Space%20Metrics/presenter/components/custom_text_field.dart';
 import 'package:space_app/features/Space%20Metrics/presenter/components/share_card.dart';
 import 'package:space_app/features/Space%20Metrics/presenter/screens/planet_list.dart';
-
 
 class SpaceMetrics extends StatefulWidget {
   const SpaceMetrics({super.key});
@@ -22,7 +18,6 @@ class SpaceMetrics extends StatefulWidget {
 }
 
 class _SpaceMetricsState extends State<SpaceMetrics> {
-
   final weightController = TextEditingController();
   final ageController = TextEditingController();
 
@@ -44,18 +39,14 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
 
     if (weight == null || age == null || weight <= 0 || age <= 0) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please enter a valid weight and age'),
-        ),
+        const SnackBar(content: Text('Please enter a valid weight and age')),
       );
       return;
     }
 
     if (context.read<MetricsCubit>().selectedPlanet == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please select a planet first'),
-        ),
+        const SnackBar(content: Text('Please select a planet first')),
       );
       return;
     }
@@ -75,11 +66,9 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
           return BlocListener<MetricsCubit, MetricsState>(
             listener: (context, state) {
               if (state is MetricsSuccess) {
-                spaceWeightController.text =
-                    state.weight.toStringAsFixed(2);
+                spaceWeightController.text = state.weight.toStringAsFixed(2);
 
-                spaceAgeController.text =
-                    state.age.toStringAsFixed(2);
+                spaceAgeController.text = state.age.toStringAsFixed(2);
               }
 
               if (state is MetricsInitial) {
@@ -95,7 +84,6 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
                     spacing: 20,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-
                       // Title
                       Center(
                         child: Text(
@@ -127,9 +115,7 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
                           CustomTextField(
                             text: "Weight",
                             controller: weightController,
-                            img: Assets.icons.iconsaxWeight.svg(
-                              width: 20,
-                            ),
+                            img: Assets.icons.iconsaxWeight.svg(width: 20),
                           ),
 
                           CustomTextField(
@@ -144,7 +130,7 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
                       ),
 
                       // Planets
-                       PlanetList(),
+                      PlanetList(),
 
                       // Space Information
                       Text(
@@ -164,9 +150,7 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
                             text: "Weight",
                             controller: spaceWeightController,
                             readOnly: true,
-                            img: Assets.icons.iconsaxWeight.svg(
-                              width: 20,
-                            ),
+                            img: Assets.icons.iconsaxWeight.svg(width: 20),
                           ),
 
                           CustomTextField(
@@ -212,13 +196,15 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
                             backgroundColor: AppColors.primary,
                           ),
                           onPressed: () {
-                            if (context.read<MetricsCubit>().state
-                                is! MetricsSuccess) {
+                            final cubit = context.read<MetricsCubit>();
+
+                            final state = cubit.state;
+                            final planet = cubit.selectedPlanet;
+
+                            if (state is! MetricsSuccess || planet == null) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                  content: Text(
-                                    'Calculate your metrics first',
-                                  ),
+                                  content: Text('Calculate your metrics first'),
                                 ),
                               );
                               return;
@@ -227,7 +213,14 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
                             showDialog(
                               context: context,
                               builder: (context) {
-                                return ShareCard();
+                                return ShareCard(
+                                  planetName: planet.name,
+                                  planetImage: planet.image,
+                                  weight: state.weight.toStringAsFixed(2),
+                                  age: state.age.toStringAsFixed(2),
+                                  jumpMultiplier:
+                                      'Jump ${(1 / planet.gravity).toStringAsFixed(1)}×',
+                                );
                               },
                             );
                           },
