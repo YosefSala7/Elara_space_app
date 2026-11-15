@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
 
+
+import 'package:flutter/material.dart';
+
 class PlanetModel {
   final String name;
   final Image image;
-  final String title;        
-  final String about;    
+  final String title;
+  final String about;
   final String distanceFromSun;
-  final String lengthOfDay;    
-  final String orbitalPeriod;  
-  final String radius;         
-  final String mass;           
-  final String gravity;       
-  final String surfaceArea;  
+  final String lengthOfDay;
+  final String orbitalPeriodText;
+  final String radius;
+  final String mass;
+  final String gravityText;
+  final String surfaceArea;
+
+  // Values used for calculations
+  final double gravity;
+  final double orbitalPeriod;
 
   const PlanetModel({
     required this.name,
@@ -21,11 +28,13 @@ class PlanetModel {
     required this.about,
     required this.distanceFromSun,
     required this.lengthOfDay,
-    required this.orbitalPeriod,
+    required this.orbitalPeriodText,
     required this.radius,
     required this.mass,
-    required this.gravity,
+    required this.gravityText,
     required this.surfaceArea,
+    required this.gravity,
+    required this.orbitalPeriod,
   });
 }
 
@@ -37,12 +46,15 @@ List<PlanetModel> planets = [
     about: 'Mercury is the closest planet to the Sun and the smallest in the Solar System. Because of its proximity to the Sun and lack of atmosphere, it experiences extreme temperature fluctuations.',
     distanceFromSun: '57,910,000',
     lengthOfDay: '1,407.6',
-    orbitalPeriod: '0.24',
+    orbitalPeriodText: '0.24',
     radius: '2,439.7',
     mass: '3.301 × 10²³',
-    gravity: '3.7',
+    gravityText: '3.7',
     surfaceArea: '7.48 × 10⁷',
+    gravity: 3.7,
+    orbitalPeriod: 0.2408,
   ),
+
   PlanetModel(
     name: 'Venus',
     image: Assets.imgs.venus.image(),
@@ -50,12 +62,15 @@ List<PlanetModel> planets = [
     about: 'Venus is the second planet from the Sun and its hottest planet. Its thick, toxic atmosphere traps heat in a runaway greenhouse effect, making it scorching hot.',
     distanceFromSun: '108,200,000',
     lengthOfDay: '5,832.2',
-    orbitalPeriod: '0.62',
+    orbitalPeriodText: '0.62',
     radius: '6,051.8',
     mass: '4.867 × 10²⁴',
-    gravity: '8.87',
+    gravityText: '8.87',
     surfaceArea: '4.60 × 10⁸',
+    gravity: 8.87,
+    orbitalPeriod: 0.6152,
   ),
+
   PlanetModel(
     name: 'Earth',
     image: Assets.imgs.earth.image(),
@@ -63,25 +78,31 @@ List<PlanetModel> planets = [
     about: 'Earth is the only known planet in the universe that supports life. Its unique combination of factors, including liquid water, a breathable atmosphere, and a suitable distance from the Sun, has created the ideal conditions for the development of complex organisms. Earth\'s magnetic field protects it from harmful solar radiation, and its atmosphere helps to regulate temperature and weather patterns.',
     distanceFromSun: '149,598,026',
     lengthOfDay: '23.93',
-    orbitalPeriod: '1',
+    orbitalPeriodText: '1',
     radius: '6371',
     mass: '5.972 × 10²⁴',
-    gravity: '9.81',
+    gravityText: '9.81',
     surfaceArea: '5.10 × 10⁸',
+    gravity: 9.81,
+    orbitalPeriod: 1.0,
   ),
+
   PlanetModel(
     name: 'Mars',
     image: Assets.imgs.mars.image(),
     title: 'Mars: The Red Planet',
-    about: 'Mars is the fourth planet from the Sun – a dusty, cold, desert world with a very thin atmosphere. There is strong evidence Mars was—billions of years ago— wetter and warmer, with a thicker atmosphere.',
+    about: 'Mars is the fourth planet from the Sun – a dusty, cold, desert world with a very thin atmosphere. There is strong evidence Mars was—billions of years ago—wetter and warmer, with a thicker atmosphere.',
     distanceFromSun: '227,940,000',
     lengthOfDay: '24.62',
-    orbitalPeriod: '1.88',
+    orbitalPeriodText: '1.88',
     radius: '3,389.5',
     mass: '6.417 × 10²³',
-    gravity: '3.72',
+    gravityText: '3.72',
     surfaceArea: '1.45 × 10⁸',
+    gravity: 3.72,
+    orbitalPeriod: 1.8808,
   ),
+
   PlanetModel(
     name: 'Jupiter',
     image: Assets.imgs.jupiter.image(),
@@ -89,12 +110,15 @@ List<PlanetModel> planets = [
     about: 'Jupiter is the largest planet in our solar system by far, more than twice as massive as all the other planets combined. Jupiter\'s iconic Great Red Spot is a giant storm bigger than Earth that has raged for hundreds of years.',
     distanceFromSun: '778,330,000',
     lengthOfDay: '9.93',
-    orbitalPeriod: '11.86',
+    orbitalPeriodText: '11.86',
     radius: '69,911',
     mass: '1.898 × 10²⁷',
-    gravity: '24.79',
+    gravityText: '24.79',
     surfaceArea: '6.21 × 10¹⁰',
+    gravity: 24.79,
+    orbitalPeriod: 11.862,
   ),
+
   PlanetModel(
     name: 'Saturn',
     image: Assets.imgs.saturn.image(),
@@ -102,25 +126,31 @@ List<PlanetModel> planets = [
     about: 'Saturn is the sixth planet from the Sun and the second largest in the solar system. Adorned with a dazzling, complex system of icy rings, Saturn is unique in our solar system.',
     distanceFromSun: '1,433,500,000',
     lengthOfDay: '10.7',
-    orbitalPeriod: '29.46',
+    orbitalPeriodText: '29.46',
     radius: '58,232',
     mass: '5.683 × 10²⁶',
-    gravity: '10.44',
+    gravityText: '10.44',
     surfaceArea: '4.27 × 10¹⁰',
+    gravity: 10.44,
+    orbitalPeriod: 29.457,
   ),
+
   PlanetModel(
     name: 'Uranus',
     image: Assets.imgs.uranus.image(),
     title: 'Uranus: The Tilted Planet',
-    about: 'Uranus is the seventh planet from its iconic blue-green appearance. Its unique tilt makes it spin on its side, resulting in extreme 42-year-long seasons.',
+    about: 'Uranus is the seventh planet from the Sun. Its unique tilt makes it spin on its side, resulting in extreme 42-year-long seasons.',
     distanceFromSun: '2,872,500,000',
     lengthOfDay: '17.24',
-    orbitalPeriod: '84.01',
+    orbitalPeriodText: '84.01',
     radius: '25,362',
     mass: '8.681 × 10²⁵',
-    gravity: '8.69',
+    gravityText: '8.69',
     surfaceArea: '8.11 × 10⁹',
+    gravity: 8.69,
+    orbitalPeriod: 84.0168,
   ),
+
   PlanetModel(
     name: 'Neptune',
     image: Assets.imgs.neptune.image(),
@@ -128,12 +158,15 @@ List<PlanetModel> planets = [
     about: 'Neptune, the eighth and most distant major planet in our solar system, is a dark, cold, and whipped by supersonic winds. It was the first planet located through mathematical calculations rather than via a telescope.',
     distanceFromSun: '4,495,100,000',
     lengthOfDay: '16.11',
-    orbitalPeriod: '164.8',
+    orbitalPeriodText: '164.8',
     radius: '24,622',
     mass: '1.024 × 10²⁶',
-    gravity: '11.15',
+    gravityText: '11.15',
     surfaceArea: '7.62 × 10⁹',
+    gravity: 11.15,
+    orbitalPeriod: 164.79,
   ),
+
   PlanetModel(
     name: 'Sun',
     image: Assets.imgs.sun.image(),
@@ -141,10 +174,12 @@ List<PlanetModel> planets = [
     about: 'The Sun is a yellow dwarf star, a hot ball of glowing plasma at the heart of our solar system. Its gravity holds the solar system together, keeping everything from the biggest planets to the smallest debris in its orbit.',
     distanceFromSun: '0',
     lengthOfDay: '609.12',
-    orbitalPeriod: '230,000,000',
+    orbitalPeriodText: '230,000,000',
     radius: '696,340',
     mass: '1.989 × 10³⁰',
-    gravity: '274',
+    gravityText: '274',
     surfaceArea: '6.09 × 10¹²',
+    gravity: 274,
+    orbitalPeriod: 1,
   ),
 ];

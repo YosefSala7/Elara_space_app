@@ -1,61 +1,62 @@
 import 'package:flutter/material.dart';
-import 'package:glass/glass.dart';
-
 import 'package:space_app/core/app_colors.dart';
-
 import 'package:space_app/core/gen/fonts.gen.dart';
 
 class CustomTextField extends StatelessWidget {
-  CustomTextField({super.key, required this.text, required this.img});
-  String text;
-  dynamic img;
+  final String text;
+  final Widget img;
+  final TextEditingController controller;
+  final bool readOnly;
+
+  const CustomTextField({
+    super.key,
+    required this.text,
+    required this.img,
+    required this.controller,
+    this.readOnly = false,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      spacing: 5,
-      crossAxisAlignment: .start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            text,
-            style: TextStyle(
-              color: AppColors.white,
-              fontWeight: .w400,
-              fontSize: 12,
-              fontFamily: FontFamily.spaceGrotesk,
-            ),
-          ),
+    return Container(
+      width: 160,
+      height: 55,
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      decoration: BoxDecoration(
+        color: AppColors.white.withValues(alpha: .1),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: AppColors.white.withValues(alpha: .2),
         ),
-        // LiquidGlassLayer(
-        //   settings: LiquidGlassSettings.ios27Regular(
-        //     brightness: MediaQuery.platformBrightnessOf(context),
-        //   ),
-        //   child: LiquidGlass(
-        //     shape: LiquidRoundedSuperellipse(borderRadius: 28),
-        //     child:
-        Container(
-          padding: EdgeInsets.all(3),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
-          width: 155,
-          height: 40,
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
+      ),
+      child: Row(
+        children: [
+          img,
+          const SizedBox(width: 8),
+          Expanded(
             child: TextField(
-              cursorColor: AppColors.primary,
-              textAlignVertical: TextAlignVertical.center,
+              controller: controller,
+              readOnly: readOnly,
+              keyboardType: const TextInputType.numberWithOptions(
+                decimal: true,
+              ),
+              style: const TextStyle(
+                color: AppColors.white,
+                fontFamily: FontFamily.spaceGrotesk,
+              ),
               decoration: InputDecoration(
-                icon: img,
-                border: .none,
+                hintText: text,
+                hintStyle: TextStyle(
+                  color: AppColors.white.withValues(alpha: .6),
+                  fontSize: 13,
+                ),
+                border: InputBorder.none,
                 isDense: true,
               ),
             ),
           ),
-        ).asGlass(clipBorderRadius: BorderRadius.circular(16)),
-        //   ),
-        // ),
-      ],
+        ],
+      ),
     );
   }
 }

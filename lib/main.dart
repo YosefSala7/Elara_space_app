@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:space_app/core/components/background.dart';
 import 'package:space_app/features/Space%20Metrics/presenter/screens/space_metrics.dart';
@@ -13,6 +15,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+  scrollBehavior: const MaterialScrollBehavior().copyWith(
+    dragDevices: {
+      PointerDeviceKind.touch,
+      PointerDeviceKind.mouse,
+      PointerDeviceKind.trackpad,
+      PointerDeviceKind.stylus,
+    },
+  ),
       initialRoute: SplashScreen.splashRoute,
       routes: {SplashScreen.splashRoute: (context) => 
       SpaceMetrics()
