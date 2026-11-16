@@ -27,7 +27,8 @@ dependencies:
   awesome_bottom_bar: ^1.2.4
   supabase_flutter: ^2.18.3
   dartz: ^0.10.1
-  
+  flutter_bloc: ^9.1.1
+  skeletonizer: ^3.0.0
 
 dev_dependencies:
   build_runner: ^2.12.0
