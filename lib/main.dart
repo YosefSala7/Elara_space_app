@@ -4,8 +4,10 @@ import 'package:space_app/core/app_theme.dart';
 import 'package:space_app/features/home/presenter/screens/home_screen.dart';
 import 'package:space_app/features/layout/layout_view.dart';
 import 'package:space_app/features/learn/presenter/screens/space_academy_screen.dart';
+import 'package:space_app/features/onboarding/presenter/screens/onboarding_screen.dart';
 import 'package:space_app/features/settings/presenter/screens/settings_page.dart';
 import 'package:space_app/features/splashscreen/presenter/screens/splash_screen.dart';
+
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
@@ -25,7 +27,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       theme: AppThemes.appTheme,
       initialRoute: SplashScreen.splashRoute,
       routes: {
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
         HomeScreen.homeRoute: (context) => HomeScreen(),
         LayoutView.layoutRoute: (context) => LayoutView(),
         SettingsPage.settingsRoutName: (context) => SettingsPage(),
-        SpaceAcademyScreen.routeName :(context) => SpaceAcademyScreen()
+        SpaceAcademyScreen.routeName :(context) => SpaceAcademyScreen(),
+        OnboardingScreen.onboardingRout: (context) => OnboardingScreen(),
       },
       debugShowCheckedModeBanner: false,
     );
