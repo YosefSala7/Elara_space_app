@@ -117,6 +117,11 @@ class $AssetsImgsGen {
 class $AssetsLottiesGen {
   const $AssetsLottiesGen();
 
+  /// File path: assets/lotties/Astronaut_Space_Error_Animation_v2.json
+  LottieGenImage get astronautSpaceErrorAnimationV2 => const LottieGenImage(
+    'assets/lotties/Astronaut_Space_Error_Animation_v2.json',
+  );
+
   /// File path: assets/lotties/Rocket loader.json
   LottieGenImage get rocketLoader =>
       const LottieGenImage('assets/lotties/Rocket loader.json');
@@ -126,7 +131,11 @@ class $AssetsLottiesGen {
       const LottieGenImage('assets/lotties/falling-stars-background.json');
 
   /// List of all assets
-  List<LottieGenImage> get values => [rocketLoader, fallingStarsBackground];
+  List<LottieGenImage> get values => [
+    astronautSpaceErrorAnimationV2,
+    rocketLoader,
+    fallingStarsBackground,
+  ];
 }
 
 class $AssetsIconsNavbarGen {
