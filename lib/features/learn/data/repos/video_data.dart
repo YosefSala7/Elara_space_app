@@ -1,5 +1,4 @@
-import 'package:space_app/features/learn/presenter/components/video.dart';
-
+import 'package:space_app/features/learn/data/models/video.dart';
 
 /// Replace the 11-char placeholder IDs with real YouTube video IDs.
 const List<VideoFilter> videoFilters = VideoFilter.values;
@@ -7,12 +6,15 @@ const List<VideoFilter> videoFilters = VideoFilter.values;
 const List<Video> videos = [
   Video(
     id: '1',
-    title: 'A Tour of Our Solar System',
+    title:
+        '9+ Avatar image SOLAR SYSTEM',
     category: 'Solar System',
     filter: VideoFilter.solarSystem,
-    duration: Duration(minutes: 8, seconds: 42),
-    youtubeUrl: 'https://www.youtube.com/watch?v=REPLACE_001',
-    description: 'A guided journey across the Sun, planets, moons and beyond.',
+    duration: Duration(minutes: 4, seconds: 21),
+    youtubeUrl:
+        'https://youtu.be/sD1-rS_TM2o?si=GEDSjyptU4eU-lI9',
+    description:
+        'Wanna know what is there in Space? What is the Milky Way? What are the various planets in our Solar System? Keep calm and watch this video where Dr.Binocs explains the Solar System in an interesting and detailed way!',
     isFeatured: true,
   ),
   Video(

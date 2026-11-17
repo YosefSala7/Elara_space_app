@@ -4,7 +4,7 @@ import 'package:space_app/core/components/background.dart';
 import 'package:space_app/features/learn/data/repos/video_data.dart';
 import 'package:space_app/features/learn/presenter/components/category_chips.dart';
 import 'package:space_app/features/learn/presenter/components/featured_video_card.dart';
-import 'package:space_app/features/learn/presenter/components/video.dart';
+import 'package:space_app/features/learn/data/models/video.dart';
 import 'package:space_app/features/learn/presenter/components/video_list_tile.dart';
 
 import 'video_detail_screen.dart';
@@ -29,8 +29,8 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
   void _open(Video video) {
     Navigator.of(context).push(PageRouteBuilder(
       transitionDuration: const Duration(milliseconds: 400),
-      pageBuilder: (_, __, ___) => VideoDetailScreen(video: video),
-      transitionsBuilder: (_, anim, __, child) =>
+      pageBuilder: (_, _, _) => VideoDetailScreen(video: video),
+      transitionsBuilder: (_, anim, _, child) =>
           FadeTransition(opacity: anim, child: child),
     ));
   }

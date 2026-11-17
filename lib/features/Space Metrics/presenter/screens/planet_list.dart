@@ -19,19 +19,14 @@ class PlanetList extends StatelessWidget {
         return SizedBox(
           height: 200,
           child: ListView.separated(
-            padding: const EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 8,
-            ),
-            separatorBuilder: (context, index) =>
-                const SizedBox(width: 12),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            separatorBuilder: (context, index) => const SizedBox(width: 12),
             scrollDirection: Axis.horizontal,
             itemCount: planets.length,
             itemBuilder: (context, index) {
               final planet = planets[index];
 
-              final isSelected =
-                  cubit.selectedPlanet?.name == planet.name;
+              final isSelected = cubit.selectedPlanet?.name == planet.name;
 
               return GestureDetector(
                 onTap: () {
@@ -47,9 +42,7 @@ class PlanetList extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                       border: isSelected
                           ? Border.all(
-                              color: AppColors.primary.withValues(
-                                alpha: .6,
-                              ),
+                              color: AppColors.primary.withValues(alpha: .6),
                               width: 1.5,
                             )
                           : null,
@@ -57,10 +50,7 @@ class PlanetList extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          height: 110,
-                          child: planet.image,
-                        ),
+                        SizedBox(height: 110, child: planet.image),
                         const SizedBox(height: 8),
                         Text(
                           planet.name,
@@ -74,9 +64,7 @@ class PlanetList extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ).asGlass(
-                    clipBorderRadius: BorderRadius.circular(16),
-                  ),
+                  ).asGlass(clipBorderRadius: BorderRadius.circular(16)),
                 ),
               );
             },

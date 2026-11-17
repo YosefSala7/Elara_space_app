@@ -5,7 +5,6 @@ enum VideoFilter {
   solarSystem('Solar System'),
   starsGalaxies('Stars & Galaxies'),
   planets('Planets');
-
   const VideoFilter(this.label);
   final String label;
 }

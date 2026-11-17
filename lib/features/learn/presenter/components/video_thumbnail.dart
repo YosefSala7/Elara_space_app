@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:space_app/features/learn/presenter/components/video.dart';
+import 'package:space_app/features/learn/data/models/video.dart';
 
 class VideoThumbnail extends StatelessWidget {
   const VideoThumbnail({

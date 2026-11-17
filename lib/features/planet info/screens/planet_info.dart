@@ -23,7 +23,7 @@ class PlanetInfo extends StatelessWidget {
               spacing: 20,
               children: [
                 InfoAppBar(name: planet.name),
-                Center(child: Image.asset(planet.images)),
+                Center(child: Image.network(planet.images)),
                 AboutSection(about: planet.about),
                 StatsSection(planet: planet),
               ],

@@ -9,6 +9,7 @@ import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/features/home/components/custom_arrow_button.dart';
 import 'package:space_app/features/home/presenter/manager/planets_api_cubit.dart';
 import 'package:space_app/features/home/presenter/manager/planets_api_states.dart';
+import 'package:space_app/features/planet%20info/screens/planet_info.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -95,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       }
 
-                      if (state.planets != null && state.planets!.isNotEmpty) {
+                      if (state.planets.isNotEmpty) {
                         return Column(
                           children: [
                             CoverflowCarousel.builder(
@@ -110,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               entryAnimationDuration: const Duration(
                                 milliseconds: 100,
                               ),
-                              itemCount: state.planets!.length,
+                              itemCount: state.planets.length,
                               elevation: 0,
                               itemWidth: 260,
                               itemHeight: 260,
@@ -123,15 +124,16 @@ class _HomeScreenState extends State<HomeScreen> {
                               itemBuilder: (context, index) {
                                 return OpenContainer(
                                   openBuilder: (context, action) =>
-                                      const Placeholder(),
+                                      PlanetInfo(planet: state.planets[index]),
                                   closedBuilder: (context, action) =>
                                       Image.network(
-                                        state.planets![index].images,
+                                        state.planets[index].images,
                                         fit: BoxFit.cover,
                                         loadingBuilder:
                                             (context, child, loadingProgress) {
-                                              if (loadingProgress == null)
+                                              if (loadingProgress == null) {
                                                 return child;
+                                              }
                                               return const Skeletonizer.zone(
                                                 child: Bone.circle(size: 260),
                                               );
@@ -175,7 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         );
                                       },
                                   child: Text(
-                                    state.planets![_currentPage].name,
+                                    state.planets[_currentPage].name,
                                     key: ValueKey<int>(_currentPage),
                                     style: textTheme.headlineSmall,
                                   ),
