@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         return Column(
                           children: [
                             CoverflowCarousel.builder(
-                              isInfinite: false,
+                              isInfinite: true,
                               initialPage: _currentPage,
                               onPageChanged: (value) {
                                 setState(() {
@@ -113,38 +113,39 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               itemCount: state.planets.length,
                               elevation: 0,
-                              itemWidth: 260,
-                              itemHeight: 260,
+                              itemWidth: 330,
+                              itemHeight: 330,
                               scrollDirection: Axis.horizontal,
                               nearCardSpacing: 140,
                               farCardSpacing: 120,
-                              skewAngle: -0.3,
+                              skewAngle: -0.4,
                               obscure: 0.4,
-                              enableShadow: false,
+                              enableShadow: true,
                               itemBuilder: (context, index) {
                                 return OpenContainer(
                                   openBuilder: (context, action) =>
                                       PlanetInfo(planet: state.planets[index]),
-                                  closedBuilder: (context, action) =>
-                                      Image.network(
-                                        state.planets[index].images,
-                                        fit: BoxFit.cover,
-                                        loadingBuilder:
-                                            (context, child, loadingProgress) {
-                                              if (loadingProgress == null) {
-                                                return child;
-                                              }
-                                              return const Skeletonizer.zone(
-                                                child: Bone.circle(size: 260),
-                                              );
-                                            },
-                                        errorBuilder:
-                                            (context, error, stackTrace) {
-                                              return const Icon(
-                                                Icons.broken_image,
-                                              );
-                                            },
-                                      ),
+                                  closedBuilder: (context, action) => Padding(
+                                    padding: const EdgeInsets.all(30.0),
+                                    child: Image.network(
+                                      state.planets[index].images,
+                                      loadingBuilder:
+                                          (context, child, loadingProgress) {
+                                            if (loadingProgress == null) {
+                                              return child;
+                                            }
+                                            return const Skeletonizer.zone(
+                                              child: Bone.circle(size: 260),
+                                            );
+                                          },
+                                      errorBuilder:
+                                          (context, error, stackTrace) {
+                                            return const Icon(
+                                              Icons.broken_image,
+                                            );
+                                          },
+                                    ),
+                                  ),
                                   closedShape: const CircleBorder(
                                     side: BorderSide.none,
                                   ),
