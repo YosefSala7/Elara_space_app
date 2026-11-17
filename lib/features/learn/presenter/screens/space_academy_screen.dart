@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/components/background.dart';
 import 'package:space_app/features/learn/data/repos/video_data.dart';
@@ -27,12 +28,14 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
       .toList();
 
   void _open(Video video) {
-    Navigator.of(context).push(PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 400),
-      pageBuilder: (_, _, _) => VideoDetailScreen(video: video),
-      transitionsBuilder: (_, anim, _, child) =>
-          FadeTransition(opacity: anim, child: child),
-    ));
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        transitionDuration: const Duration(milliseconds: 400),
+        pageBuilder: (_, _, _) => VideoDetailScreen(video: video),
+        transitionsBuilder: (_, anim, _, child) =>
+            FadeTransition(opacity: anim, child: child),
+      ),
+    );
   }
 
   @override
@@ -51,18 +54,24 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('WATCH & DISCOVER',
-                        style: t.labelSmall?.copyWith(color: AppColors.white)),
+                    Text(
+                      'WATCH & DISCOVER',
+                      style: t.labelSmall?.copyWith(color: AppColors.white),
+                    ),
                     const SizedBox(height: 4),
-                    Text('Space Academy',
-                        style: t.displayMedium?.copyWith(color: AppColors.white)),
+                    Text(
+                      'Space Academy',
+                      style: t.displayMedium?.copyWith(color: AppColors.white),
+                    ),
                   ],
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: FeaturedVideoCard(
-                    video: _featured, onTap: () => _open(_featured)),
+                  video: _featured,
+                  onTap: () => _open(_featured),
+                ),
               ),
               const SizedBox(height: 20),
               CategoryChips(
@@ -77,12 +86,16 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text('Continue learning',
-                        style:
-                            t.headlineSmall?.copyWith(color: AppColors.white)),
-                    Text('lessons ${items.length}',
-                        style: t.labelSmall
-                            ?.copyWith(color: AppColors.secorndary)),
+                    Text(
+                      'Continue learning',
+                      style: t.headlineSmall?.copyWith(color: AppColors.white),
+                    ),
+                    Text(
+                      'lessons ${items.length}',
+                      style: t.labelSmall?.copyWith(
+                        color: AppColors.secorndary,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -101,21 +114,27 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
                         builder: (_, value, child) => Opacity(
                           opacity: value,
                           child: Transform.translate(
-                              offset: Offset(0, 24 * (1 - value)), child: child),
+                            offset: Offset(0, 24 * (1 - value)),
+                            child: child,
+                          ),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child:
-                              VideoListTile(video: v, onTap: () => _open(v)),
+                          child: VideoListTile(video: v, onTap: () => _open(v)),
                         ),
                       ),
                     if (items.isEmpty)
                       Padding(
                         padding: const EdgeInsets.all(40),
-                        child: Text('No lessons yet',
-                            style: t.labelSmall
-                                ?.copyWith(color: AppColors.secorndary)),
+                        child: Text(
+                          'No lessons yet',
+                          style: t.labelSmall?.copyWith(
+                            color: AppColors.secorndary,
+                          ),
+                        ),
                       ),
+
+                    Gap(50),
                   ],
                 ),
               ),
