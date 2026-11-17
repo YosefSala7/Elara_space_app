@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:space_app/core/app_colors.dart';
+import 'package:space_app/features/layout/layout_view.dart';
 import 'package:space_app/features/onboarding/presenter/widgets/page_indictor.dart';
 
 class OnbordingController extends StatelessWidget {
@@ -42,7 +43,11 @@ class OnbordingController extends StatelessWidget {
                 ),
 
                 ElevatedButton(
-                  onPressed: onNext,
+                  onPressed: currentPage == pageIndex - 1
+                      ? () {
+                          Navigator.pushNamed(context, LayoutView.layoutRoute);
+                        }
+                      : onNext,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFFF4D4D),
                     foregroundColor: Colors.white,

@@ -1,4 +1,4 @@
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 enum VideoFilter {
   all('All'),
