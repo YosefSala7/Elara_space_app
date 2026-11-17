@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
+import 'package:space_app/core/app_theme.dart';
+import 'package:space_app/features/onboarding/presenter/screens/onboarding_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await LiquidGlass.precache();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const new({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: "",
-      routes: {},
+      theme: AppThemes.appTheme,
+      initialRoute: OnboardingScreen.onboardingRout,
+      routes: {
+        OnboardingScreen.onboardingRout: (context) => OnboardingScreen(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }
