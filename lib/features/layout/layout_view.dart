@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
+// import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/features/Space%20Metrics/presenter/screens/space_metrics.dart';
 import 'package:space_app/features/home/presenter/screens/home_screen.dart';
 import 'package:space_app/features/learn/presenter/screens/space_academy_screen.dart';
+import 'package:space_app/features/quizes/presenter/screens/quiz_categories_screen.dart';
 import 'package:space_app/features/settings/presenter/screens/settings_page.dart';
 
 class LayoutView extends StatefulWidget {
@@ -20,7 +21,7 @@ class _LayoutViewState extends State<LayoutView> {
     HomeScreen(),
     SpaceMetrics(),
     SpaceAcademyScreen(),
-    const Center(child: Text("Quizes")),
+    QuizCategoriesScreen(),
     SettingsPage(),
   ];
   @override
@@ -33,13 +34,14 @@ class _LayoutViewState extends State<LayoutView> {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Align(
               alignment: .bottomCenter,
-              child: LiquidGlassLayer(
-                settings: LiquidGlassSettings.ios27Regular(
-                  brightness: Brightness.dark,
-                ),
-                child: LiquidGlass(
-                  shape: LiquidRoundedSuperellipse(borderRadius: 40),
-                  child: Padding(
+              // child: LiquidGlassLayer(
+              //   settings: LiquidGlassSettings.ios27Regular(
+              //     brightness: Brightness.dark,
+              //   ),
+                // child: LiquidGlass(
+                //   shape: LiquidRoundedSuperellipse(borderRadius: 40),
+                  child:
+                   Padding(
                     padding: const EdgeInsets.all(3.0),
                     child: BottomNavigationBar(
                       currentIndex: _index,
@@ -251,8 +253,8 @@ class _LayoutViewState extends State<LayoutView> {
                 ),
               ),
             ),
-          ),
-        ),
+        //   ),
+        // ),
       ],
     );
   }
