@@ -4,16 +4,17 @@ import 'package:coverflow_carousel/coverflow_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+
 import 'package:space_app/core/components/background.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/features/home/components/custom_arrow_button.dart';
 import 'package:space_app/features/home/presenter/manager/planets_api_cubit.dart';
 import 'package:space_app/features/home/presenter/manager/planets_api_states.dart';
+import 'package:space_app/features/planet%20info/screens/planet_info.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   static const homeRoute = "/home";
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -36,21 +37,21 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              spacing: 30,
-              children: [
-                Text("Explore", style: textTheme.headlineSmall),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Which planet\nwould you like to explore?",
-                    style: textTheme.headlineSmall,
+            child: BlocProvider(
+              create: (context) => PlanetsApiCubit()..getPlanets(),
+              child: Column(
+                crossAxisAlignment: .center,
+                spacing: 20,
+                children: [
+                  Text("Explore", style: textTheme.headlineSmall),
+                  Align(
+                    alignment: .topLeft,
+                    child: Text(
+                      "Which planet\nwould you like to explore?",
+                      style: textTheme.headlineSmall,
+                    ),
                   ),
-                ),
-                BlocProvider(
-                  create: (context) => PlanetsApiCubit()..getPlanets(),
-                  child: BlocBuilder<PlanetsApiCubit, PlanetsState>(
+                  BlocBuilder<PlanetsApiCubit, PlanetsState>(
                     builder: (context, state) {
                       if (state.isLoading) {
                         return Skeletonizer.zone(

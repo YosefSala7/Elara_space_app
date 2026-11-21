@@ -6,6 +6,7 @@ import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
 import 'package:space_app/features/home/presenter/manager/planets_api_cubit.dart';
 import 'package:space_app/features/layout/layout_view.dart';
+import 'package:space_app/features/onboarding/presenter/screens/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -23,9 +24,9 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 7), () {
+    Future.delayed(Duration(seconds: 5), () {
       if (!mounted) return;
-      Navigator.pushReplacementNamed(context, LayoutView.layoutRoute);
+      Navigator.pushReplacementNamed(context, OnboardingScreen.onboardingRout);
     });
     _controller = AnimationController(
       vsync: this,

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
+import 'package:space_app/features/Space%20Metrics/presenter/screens/space_metrics.dart';
 import 'package:space_app/features/home/presenter/screens/home_screen.dart';
+import 'package:space_app/features/learn/presenter/screens/space_academy_screen.dart';
+import 'package:space_app/features/settings/presenter/screens/settings_page.dart';
 
 class LayoutView extends StatefulWidget {
   const LayoutView({super.key});
@@ -13,11 +16,18 @@ class LayoutView extends StatefulWidget {
 
 class _LayoutViewState extends State<LayoutView> {
   int _index = 0;
+  List<Widget> screens = [
+    HomeScreen(),
+    SpaceMetrics(),
+    SpaceAcademyScreen(),
+    const Center(child: Text("Quizes")),
+    SettingsPage(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        HomeScreen(),
+        screens[_index],
         SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -55,7 +65,6 @@ class _LayoutViewState extends State<LayoutView> {
                       items: [
                         // 1. Home
                         BottomNavigationBarItem(
-                          
                           icon: SizedBox(
                             height: 36,
                             width: 50,
@@ -248,4 +257,3 @@ class _LayoutViewState extends State<LayoutView> {
     );
   }
 }
-
