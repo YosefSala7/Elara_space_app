@@ -1,16 +1,19 @@
 import 'package:animations/animations.dart';
 import 'package:coverflow_carousel/coverflow_carousel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:space_app/core/components/background.dart';
-import 'package:space_app/core/gen/fonts.gen.dart';
+import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/features/home/components/custom_arrow_button.dart';
+import 'package:space_app/features/home/presenter/manager/planets_api_cubit.dart';
+import 'package:space_app/features/home/presenter/manager/planets_api_states.dart';
 import 'package:space_app/features/home/data/models/planet_model.dart';
 import 'package:space_app/features/planet%20info/screens/planet_info.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   static const homeRoute = "/home";
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -44,16 +47,51 @@ class _HomeScreenState extends State<HomeScreen> {
                     "Which planet\nwould you like to explore?",
                     style: textTheme.headlineSmall,
                   ),
-                ),
-                CoverflowCarousel.builder(
-                  initialPage: _currentPage,
-                  onPageChanged: (value) {
-                    setState(() {
-                      _currentPage = value;
-                    });
-                  },
-                  controller: _pageController,
-                  entryAnimationDuration: Duration(milliseconds: 100),
+                  BlocBuilder<PlanetsApiCubit, PlanetsState>(
+                    builder: (context, state) {
+                      if (state.isLoading) {
+                        return Skeletonizer.zone(
+                          child: Column(
+                            children: [
+                              CoverflowCarousel.builder(
+                                isInfinite: false,
+                                initialPage: 0,
+                                itemCount: 3,
+                                elevation: 0,
+                                itemWidth: 260,
+                                itemHeight: 260,
+                                scrollDirection: Axis.horizontal,
+                                nearCardSpacing: 140,
+                                farCardSpacing: 120,
+                                skewAngle: -0.3,
+                                obscure: 0.4,
+                                enableShadow: false,
+                                itemBuilder: (context, index) {
+                                  return const Bone.circle(size: 260);
+                                },
+                              ),
+                              Row(
+                                children: [
+                                  CustomArrowButton(
+                                    onTap: () {},
+                                    direction: "left",
+                                  ),
+                                  const Spacer(),
+                                  Bone.text(
+                                    words: 1,
+                                    style: textTheme.headlineSmall,
+                                  ),
+                                  const Spacer(),
+                                  CustomArrowButton(
+                                    onTap: () {},
+                                    direction: "right",
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        );
+                      }
 
                   itemCount: planets.length,
                   elevation: 0,
