@@ -4,6 +4,7 @@ class PlanetModel {
   final String title;
   final String about;
   final String images;
+  final String model_3D;
 
   final String distanceFromSun;
   final double lengthOfDay;
@@ -21,6 +22,7 @@ class PlanetModel {
     required this.title,
     required this.about,
     required this.images,
+    required this.model_3D,
     required this.distanceFromSun,
     required this.lengthOfDay,
     required this.radius,
@@ -38,7 +40,7 @@ class PlanetModel {
       title: json['title'] ?? '',
       about: json['about'] ?? '',
       images: json['images'] ?? '',
-
+      model_3D: json['model_3D'] ?? '',
       distanceFromSun: json['Distance from Sun (km)'] ?? '',
       lengthOfDay: (json['Length of Day (hours)'] ?? 0).toDouble(),
       radius: json['Radius (km)'] ?? '',
