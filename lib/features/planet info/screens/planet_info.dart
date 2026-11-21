@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
-import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/components/background.dart';
-import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
 import 'package:space_app/features/home/components/custom_arrow_button.dart';
 import 'package:space_app/features/home/data/models/planet_model.dart';
