@@ -12,6 +12,7 @@ import 'package:space_app/features/home/presenter/manager/planets_api_states.dar
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   static const homeRoute = "/home";
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -34,82 +35,29 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: SingleChildScrollView(
-            child: BlocProvider(
-              create: (context) => PlanetsApiCubit()..getPlanets(),
-              child: Column(
-                crossAxisAlignment: .center,
-                spacing: 20,
-                children: [
-                  Text("Explore", style: textTheme.headlineSmall),
-                  Align(
-                    alignment: .topLeft,
-                    child: Text(
-                      "Which planet\nwould you like to explore?",
-                      style: textTheme.headlineSmall,
-                    ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              spacing: 40,
+              children: [
+                Text("Explore", style: textTheme.headlineSmall),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Which planet\nwould you like to explore?",
+                    style: textTheme.headlineSmall,
                   ),
-                  BlocBuilder<PlanetsApiCubit, PlanetsState>(
-                    builder: (context, state) {
-                      if (state.isLoading) {
-                        return Skeletonizer.zone(
-                          child: Column(
-                            children: [
-                              CoverflowCarousel.builder(
-                                isInfinite: false,
-                                initialPage: 0,
-                                itemCount: 3,
-                                elevation: 0,
-                                itemWidth: 260,
-                                itemHeight: 260,
-                                scrollDirection: Axis.horizontal,
-                                nearCardSpacing: 140,
-                                farCardSpacing: 120,
-                                skewAngle: -0.3,
-                                obscure: 0.4,
-                                enableShadow: false,
-                                itemBuilder: (context, index) {
-                                  return const Bone.circle(size: 260);
-                                },
-                              ),
-                              Row(
-                                children: [
-                                  CustomArrowButton(
-                                    onTap: () {},
-                                    direction: "left",
-                                  ),
-                                  const Spacer(),
-                                  Bone.text(
-                                    words: 1,
-                                    style: textTheme.headlineSmall,
-                                  ),
-                                  const Spacer(),
-                                  CustomArrowButton(
-                                    onTap: () {},
-                                    direction: "right",
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        );
-                      }
-
-                      if (state.planets.isNotEmpty) {
-                        return Column(
+                ),
+                BlocBuilder<PlanetsApiCubit, PlanetsState>(
+                  builder: (context, state) {
+                    if (state.isLoading) {
+                      return Skeletonizer.zone(
+                        child: Column(
+                          spacing: 24,
                           children: [
                             CoverflowCarousel.builder(
                               isInfinite: false,
-                              initialPage: _currentPage,
-                              onPageChanged: (value) {
-                                setState(() {
-                                  _currentPage = value;
-                                });
-                              },
-                              controller: _pageController,
-                              entryAnimationDuration: const Duration(
-                                milliseconds: 100,
-                              ),
-                              itemCount: state.planets.length,
+                              initialPage: 0,
+                              itemCount: 3,
                               elevation: 0,
                               itemWidth: 260,
                               itemHeight: 260,
@@ -120,89 +68,143 @@ class _HomeScreenState extends State<HomeScreen> {
                               obscure: 0.4,
                               enableShadow: false,
                               itemBuilder: (context, index) {
-                                return OpenContainer(
-                                  openBuilder: (context, action) =>
-                                      Placeholder(),
-                                  closedBuilder: (context, action) =>
-                                      Image.network(
-                                        state.planets[index].images,
-                                        fit: BoxFit.cover,
-                                        loadingBuilder:
-                                            (context, child, loadingProgress) {
-                                              if (loadingProgress == null)
-                                                return child;
-                                              return const Skeletonizer.zone(
-                                                child: Bone.circle(size: 260),
-                                              );
-                                            },
-                                        errorBuilder:
-                                            (context, error, stackTrace) {
-                                              return const Icon(
-                                                Icons.broken_image,
-                                              );
-                                            },
-                                      ),
-                                  closedShape: const CircleBorder(
-                                    side: BorderSide.none,
-                                  ),
-                                  closedColor: Colors.transparent,
-                                  closedElevation: 0,
-                                );
+                                return const Bone.circle(size: 260);
                               },
                             ),
                             Row(
                               children: [
                                 CustomArrowButton(
-                                  onTap: () => _pageController.previous(),
+                                  onTap: () {},
                                   direction: "left",
                                 ),
                                 const Spacer(),
-                                PageTransitionSwitcher(
-                                  duration: const Duration(milliseconds: 300),
-                                  transitionBuilder:
-                                      (
-                                        child,
-                                        primaryAnimation,
-                                        secondaryAnimation,
-                                      ) {
-                                        return FadeThroughTransition(
-                                          animation: primaryAnimation,
-                                          secondaryAnimation:
-                                              secondaryAnimation,
-                                          fillColor: Colors.transparent,
-                                          child: child,
-                                        );
-                                      },
-                                  child: Text(
-                                    state.planets![_currentPage].name,
-                                    key: ValueKey<int>(_currentPage),
-                                    style: textTheme.headlineSmall,
-                                  ),
+                                Bone.text(
+                                  words: 1,
+                                  style: textTheme.headlineSmall,
                                 ),
                                 const Spacer(),
                                 CustomArrowButton(
-                                  onTap: () => _pageController.next(),
+                                  onTap: () {},
                                   direction: "right",
                                 ),
                               ],
                             ),
                           ],
-                        );
-                      }
+                        ),
+                      );
+                    }
+
+                    if (state.planets.isNotEmpty) {
                       return Column(
+                        spacing: 24,
                         children: [
-                          SizedBox(
-                            width: 200,
-                            child: Assets.lotties.astronautSpaceErrorAnimationV2
-                                .lottie(),
+                          CoverflowCarousel.builder(
+                            isInfinite: false,
+                            initialPage: _currentPage,
+                            onPageChanged: (value) {
+                              setState(() {
+                                _currentPage = value;
+                              });
+                            },
+                            controller: _pageController,
+                            entryAnimationDuration: const Duration(
+                              milliseconds: 100,
+                            ),
+                            itemCount: state.planets.length,
+                            elevation: 0,
+                            itemWidth: 260,
+                            itemHeight: 260,
+                            scrollDirection: Axis.horizontal,
+                            nearCardSpacing: 140,
+                            farCardSpacing: 120,
+                            skewAngle: -0.3,
+                            obscure: 0.4,
+                            enableShadow: false,
+                            itemBuilder: (context, index) {
+                              return OpenContainer(
+                                openBuilder: (context, action) =>
+                                    const Placeholder(),
+                                closedBuilder: (context, action) =>
+                                    Image.network(
+                                      state.planets[index].images,
+                                      fit: BoxFit.cover,
+                                      loadingBuilder:
+                                          (context, child, loadingProgress) {
+                                            if (loadingProgress == null) {
+                                              return child;
+                                            }
+                                            return const Skeletonizer.zone(
+                                              child: Bone.circle(size: 260),
+                                            );
+                                          },
+                                      errorBuilder:
+                                          (context, error, stackTrace) {
+                                            return const Icon(
+                                              Icons.broken_image,
+                                            );
+                                          },
+                                    ),
+                                closedShape: const CircleBorder(
+                                  side: BorderSide.none,
+                                ),
+                                closedColor: Colors.transparent,
+                                closedElevation: 0,
+                              );
+                            },
                           ),
-                          Text(state.error ?? ""),
+                          Row(
+                            children: [
+                              CustomArrowButton(
+                                onTap: () => _pageController.previous(),
+                                direction: "left",
+                              ),
+                              const Spacer(),
+                              PageTransitionSwitcher(
+                                duration: const Duration(milliseconds: 300),
+                                transitionBuilder:
+                                    (
+                                      child,
+                                      primaryAnimation,
+                                      secondaryAnimation,
+                                    ) {
+                                      return FadeThroughTransition(
+                                        animation: primaryAnimation,
+                                        secondaryAnimation: secondaryAnimation,
+                                        fillColor: Colors.transparent,
+                                        child: child,
+                                      );
+                                    },
+                                child: Text(
+                                  state.planets[_currentPage].name,
+                                  key: ValueKey<int>(_currentPage),
+                                  style: textTheme.headlineSmall,
+                                ),
+                              ),
+                              const Spacer(),
+                              CustomArrowButton(
+                                onTap: () => _pageController.next(),
+                                direction: "right",
+                              ),
+                            ],
+                          ),
                         ],
                       );
-                    },
-                  ),
-                ],
-              ),
+                    }
+
+                    return Column(
+                      spacing: 12,
+                      children: [
+                        SizedBox(
+                          width: 200,
+                          child: Assets.lotties.astronautSpaceErrorAnimationV2
+                              .lottie(),
+                        ),
+                        Text(state.error ?? ""),
+                      ],
+                    );
+                  },
+                ),
+              ],
             ),
           ),
         ),
