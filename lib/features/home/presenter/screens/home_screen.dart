@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       }
 
-                      if (state.planets != null && state.planets!.isNotEmpty) {
+                      if (state.planets.isNotEmpty) {
                         return Column(
                           children: [
                             CoverflowCarousel.builder(
@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               entryAnimationDuration: const Duration(
                                 milliseconds: 100,
                               ),
-                              itemCount: state.planets!.length,
+                              itemCount: state.planets.length,
                               elevation: 0,
                               itemWidth: 260,
                               itemHeight: 260,
@@ -122,10 +122,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               itemBuilder: (context, index) {
                                 return OpenContainer(
                                   openBuilder: (context, action) =>
-                                      const Placeholder(),
+                                      Placeholder(),
                                   closedBuilder: (context, action) =>
                                       Image.network(
-                                        state.planets![index].images,
+                                        state.planets[index].images,
                                         fit: BoxFit.cover,
                                         loadingBuilder:
                                             (context, child, loadingProgress) {
