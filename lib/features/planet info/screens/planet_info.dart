@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
-import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/components/background.dart';
-import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
 import 'package:space_app/features/home/components/custom_arrow_button.dart';
 import 'package:space_app/features/home/data/models/planet_model.dart';
@@ -15,7 +13,6 @@ class PlanetInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Background(
       child: SafeArea(
         child: Padding(
@@ -27,15 +24,13 @@ class PlanetInfo extends StatelessWidget {
               children: [
                 InfoAppBar(name: planet.name),
                 SizedBox(
-                  height: 500,
+                  height: 300,
                   width: 500,
                   child: ModelViewer(
-                    disablePan: true,
                     autoPlay: true,
                     autoRotate: true,
-                    cameraControls: false,
-                    src:
-                        "https://tuhhvfjgyiliqfvnyuli.supabase.co/storage/v1/object/sign/planets_3Dmodels/earth.glb?token=eyJraWQiOiIyNTc2NDJiOS01YjE4LTRjNjQtYWE3MS1mMDE5ODg3ZjQzYjkiLCJhbGciOiJFUzI1NiJ9.eyJ1cmwiOiJwbGFuZXRzXzNEbW9kZWxzL2VhcnRoLmdsYiIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3OTUyMDIzOTIsImV4cCI6MTgyNjczODM5Mn0.80JmrrO4tE-5ler38FJ_ypLu3HEABlFgyDSqz-G07kOIqpVv0RUid4RO327ZOAWrUiF_oAPz-LkMCj3Xp30Rcg",
+                    cameraControls: true,
+                    src: planet.model_3D,
                   ),
                 ),
                 AboutSection(about: planet.about),
