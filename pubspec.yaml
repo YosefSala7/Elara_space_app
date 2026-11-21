@@ -1,19 +1,20 @@
 name: space_app
 description: "A new Flutter project."
 
-publish_to: 'none' 
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
   sdk: ^3.11.0
 
-
 dependencies:
   flutter:
     sdk: flutter
 
-
+  share_plus: ^13.3.1
+  path_provider: ^2.1.6
+  gal: ^3.0.0
   cupertino_icons: ^1.0.8
   gap: ^3.0.1
   flutter_svg: ^2.3.2
@@ -30,14 +31,18 @@ dependencies:
   flutter_bloc: ^9.1.1
   skeletonizer: ^3.0.0
   model_viewer_plus: ^1.10.0
+  cached_network_image: ^4.0.0
   
+  icons_launcher: ^3.1.0
+  smooth_page_indicator: ^3.0.0
+  flutter_animate:
+  youtube_player_iframe: ^6.0.3
 
 dev_dependencies:
   build_runner: ^2.12.0
   flutter_gen_runner:
   flutter_test:
     sdk: flutter
-
 
   flutter_lints: ^6.0.0
 flutter_gen:
@@ -47,16 +52,21 @@ flutter_gen:
     flutter_svg: true
     lottie: true
 
+icons_launcher:
+  image_path: "assets/imgs/app_icon.jpeg"
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
 flutter:
-
-
   uses-material-design: true
 
   assets:
+
     - assets/imgs/
     - assets/lotties/
     - assets/icons/
-    - assets/icons/navbar/
     - assets/icons/navbar/Bold/
     - assets/icons/navbar/Broken/
   #   - images/a_dot_ham.jpeg

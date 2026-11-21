@@ -7,6 +7,7 @@ import Foundation
 
 import app_links
 import shared_preferences_foundation
+import sqflite_darwin
 import url_launcher_macos
 import webview_flutter_wkwebview
 

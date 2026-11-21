@@ -50,7 +50,6 @@ class InfoAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      spacing: 100,
       mainAxisAlignment: .start,
       children: [
         CustomArrowButton(
