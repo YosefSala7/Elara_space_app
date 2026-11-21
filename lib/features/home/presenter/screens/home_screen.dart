@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:coverflow_carousel/coverflow_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,9 +56,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (state.isLoading) {
                         return Skeletonizer.zone(
                           child: Column(
+                            spacing: 24,
                             children: [
                               CoverflowCarousel.builder(
-                                isInfinite: false,
+                                isInfinite: true,
                                 initialPage: 0,
                                 itemCount: 3,
                                 elevation: 0,
@@ -95,7 +97,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         );
                       }
-
                       if (state.planets.isNotEmpty) {
                         return Column(
                           children: [
@@ -113,37 +114,31 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               itemCount: state.planets.length,
                               elevation: 0,
-                              itemWidth: 330,
-                              itemHeight: 330,
+                              itemWidth: 300,
+                              itemHeight: 300,
                               scrollDirection: Axis.horizontal,
-                              nearCardSpacing: 140,
-                              farCardSpacing: 120,
-                              skewAngle: -0.4,
+                              nearCardSpacing: 110,
+                              farCardSpacing: 100,
+                              skewAngle: -0.3,
                               obscure: 0.4,
-                              enableShadow: true,
+                              enableShadow: false,
                               itemBuilder: (context, index) {
                                 return OpenContainer(
                                   openBuilder: (context, action) =>
-                                      PlanetInfo(planet: state.planets[index]),
+                                      const Placeholder(),
                                   closedBuilder: (context, action) => Padding(
                                     padding: const EdgeInsets.all(30.0),
-                                    child: Image.network(
-                                      state.planets[index].images,
-                                      loadingBuilder:
-                                          (context, child, loadingProgress) {
-                                            if (loadingProgress == null) {
-                                              return child;
-                                            }
-                                            return const Skeletonizer.zone(
-                                              child: Bone.circle(size: 260),
-                                            );
-                                          },
-                                      errorBuilder:
-                                          (context, error, stackTrace) {
-                                            return const Icon(
-                                              Icons.broken_image,
-                                            );
-                                          },
+                                    child: CachedNetworkImage(
+                                      width: .infinity,
+                                      height: .infinity,
+                                      imageUrl: state.planets[index].images,
+                                      fit: BoxFit.contain,
+                                      placeholder: (context, url) =>
+                                          const Skeletonizer.zone(
+                                            child: Bone.circle(size: 300),
+                                          ),
+                                      errorWidget: (context, url, error) =>
+                                          const Icon(Icons.broken_image),
                                     ),
                                   ),
                                   closedShape: const CircleBorder(
@@ -193,7 +188,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         );
                       }
+
                       return Column(
+                        spacing: 12,
                         children: [
                           SizedBox(
                             width: 200,
@@ -205,8 +202,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
