@@ -15,8 +15,7 @@ class CustomArrowButton extends StatelessWidget {
       onTap: () {
         onTap();
       },
-      child:
-          LiquidGlassLayer(
+      child: LiquidGlassLayer(
         settings: LiquidGlassSettings.ios27Clear(),
         child: LiquidGlass(
           shape: LiquidRoundedSuperellipse(borderRadius: 50),

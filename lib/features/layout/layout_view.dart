@@ -5,6 +5,7 @@ import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/features/Space%20Metrics/presenter/screens/space_metrics.dart';
 import 'package:space_app/features/home/presenter/screens/home_screen.dart';
 import 'package:space_app/features/learn/presenter/screens/space_academy_screen.dart';
+import 'package:space_app/features/quizes/presenter/screens/quiz_categories_screen.dart';
 import 'package:space_app/features/settings/presenter/screens/settings_page.dart';
 
 class LayoutView extends StatefulWidget {
@@ -20,7 +21,7 @@ class _LayoutViewState extends State<LayoutView> {
     HomeScreen(),
     SpaceMetrics(),
     SpaceAcademyScreen(),
-    const Center(child: Text("Quizes")),
+    QuizCategoriesScreen(),
     SettingsPage(),
   ];
   @override
