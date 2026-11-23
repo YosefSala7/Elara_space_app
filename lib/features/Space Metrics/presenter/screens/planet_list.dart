@@ -25,9 +25,7 @@ class PlanetList extends StatelessWidget {
             itemCount: planets.length,
             itemBuilder: (context, index) {
               final planet = planets[index];
-
               final isSelected = cubit.selectedPlanet?.name == planet.name;
-
               return GestureDetector(
                 onTap: () {
                   cubit.selectPlanet(planet);

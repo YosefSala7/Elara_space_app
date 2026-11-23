@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
 
 
-import 'package:flutter/material.dart';
 
 class PlanetModel {
   final String name;
