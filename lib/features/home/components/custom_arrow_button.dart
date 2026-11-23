@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
-import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
+// import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
 
@@ -15,11 +15,11 @@ class CustomArrowButton extends StatelessWidget {
       onTap: () {
         onTap();
       },
-      child:
-          LiquidGlassLayer(
-        settings: LiquidGlassSettings.ios27Clear(),
-        child: LiquidGlass(
-          shape: LiquidRoundedSuperellipse(borderRadius: 50),
+      // child:
+        //   LiquidGlassLayer(
+        // settings: LiquidGlassSettings.ios27Clear(),
+        // child: LiquidGlass(
+        //   shape: LiquidRoundedSuperellipse(borderRadius: 50),
           child: Container(
             padding: EdgeInsets.all(12),
             child: direction == "left"
@@ -36,8 +36,8 @@ class CustomArrowButton extends StatelessWidget {
                     ),
                   ),
           ),
-        ),
-      ),
+      //   ),
+      // ),
     );
   }
 }
