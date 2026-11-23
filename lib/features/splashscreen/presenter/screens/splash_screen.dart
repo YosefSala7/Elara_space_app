@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:space_app/core/components/background.dart';
 import 'package:space_app/core/components/branding.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
+import 'package:space_app/features/home/presenter/manager/planets_api_cubit.dart';
+import 'package:space_app/features/layout/layout_view.dart';
 import 'package:space_app/features/onboarding/presenter/screens/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -25,7 +28,6 @@ class _SplashScreenState extends State<SplashScreen>
       if (!mounted) return;
       Navigator.pushReplacementNamed(context, OnboardingScreen.onboardingRout);
     });
-
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 3),

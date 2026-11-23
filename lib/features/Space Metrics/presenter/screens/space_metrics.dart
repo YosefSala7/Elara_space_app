@@ -77,11 +77,10 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
               }
             },
             child: Background(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+              child: SafeArea(
                 child: SingleChildScrollView(
                   child: Column(
-                    spacing: 20,
+                    spacing: 30,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Title
@@ -99,141 +98,163 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
                       ),
 
                       // Normal Information
-                      Text(
-                        "Your Normal information :",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.white,
-                          fontFamily: FontFamily.audiowide,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Text(
+                          "Your Normal information :",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.white,
+                            fontFamily: FontFamily.audiowide,
+                          ),
                         ),
                       ),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomTextField(
-                            text: "Weight",
-                            controller: weightController,
-                            img: Assets.icons.iconsaxWeight.svg(width: 20),
-                          ),
-
-                          CustomTextField(
-                            text: "Age",
-                            controller: ageController,
-                            img: Assets.icons.fiRrCalendar.svg(
-                              color: AppColors.white,
-                              width: 17,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CustomTextField(
+                              text: "Weight",
+                              controller: weightController,
+                              img: Assets.icons.iconsaxWeight.svg(width: 20),
                             ),
-                          ),
-                        ],
+
+                            CustomTextField(
+                              text: "Age",
+                              controller: ageController,
+                              img: Assets.icons.fiRrCalendar.svg(
+                                color: AppColors.white,
+                                width: 17,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
 
                       // Planets
                       PlanetList(),
 
                       // Space Information
-                      Text(
-                        "Your Information in Space:",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.white,
-                          fontFamily: FontFamily.audiowide,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Text(
+                          "Your Information in Space:",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.white,
+                            fontFamily: FontFamily.audiowide,
+                          ),
                         ),
                       ),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomTextField(
-                            text: "Weight",
-                            controller: spaceWeightController,
-                            readOnly: true,
-                            img: Assets.icons.iconsaxWeight.svg(width: 20),
-                          ),
-
-                          CustomTextField(
-                            text: "Age",
-                            controller: spaceAgeController,
-                            readOnly: true,
-                            img: Assets.icons.fiRrCalendar.svg(
-                              color: AppColors.white,
-                              width: 17,
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CustomTextField(
+                              text: "Weight",
+                              controller: spaceWeightController,
+                              readOnly: true,
+                              img: Assets.icons.iconsaxWeight.svg(width: 20),
                             ),
-                          ),
-                        ],
+
+                            CustomTextField(
+                              text: "Age",
+                              controller: spaceAgeController,
+                              readOnly: true,
+                              img: Assets.icons.fiRrCalendar.svg(
+                                color: AppColors.white,
+                                width: 17,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
 
                       // Calculate Button
-                      Align(
-                        alignment: Alignment.center,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(180, 50),
-                            backgroundColor: AppColors.primary,
-                          ),
-                          onPressed: () {
-                            calculate(context);
-                          },
-                          child: Text(
-                            "Calculate",
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: AppColors.white,
-                              fontFamily: FontFamily.audiowide,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                          spacing: 20,
+                          children: [
+                            Expanded(
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  fixedSize: const Size(180, 50),
+                                  backgroundColor: AppColors.primary,
+                                ),
+                                onPressed: () {
+                                  calculate(context);
+                                },
+                                child: Text(
+                                  "Calculate",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: AppColors.white,
+                                    fontFamily: FontFamily.audiowide,
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
+
+                            Expanded(
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  fixedSize: const Size(180, 50),
+                                  backgroundColor: AppColors.primary,
+                                ),
+                                onPressed: () {
+                                  final cubit = context.read<MetricsCubit>();
+
+                                  final state = cubit.state;
+                                  final planet = cubit.selectedPlanet;
+
+                                  if (state is! MetricsSuccess ||
+                                      planet == null) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text(
+                                          'Calculate your metrics first',
+                                        ),
+                                      ),
+                                    );
+                                    return;
+                                  }
+
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return ShareCard(
+                                        planetName: planet.name,
+                                        planetImage: planet.image,
+                                        weight: state.weight.toStringAsFixed(2),
+                                        age: state.age.toStringAsFixed(2),
+                                        jumpMultiplier:
+                                            'Jump ${(1 / planet.gravity).toStringAsFixed(1)}×',
+                                      );
+                                    },
+                                  );
+                                },
+                                child: Text(
+                                  "Share",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: AppColors.white,
+                                    fontFamily: FontFamily.audiowide,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
 
                       // Share Button
-                      Align(
-                        alignment: Alignment.center,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(180, 50),
-                            backgroundColor: AppColors.primary,
-                          ),
-                          onPressed: () {
-                            final cubit = context.read<MetricsCubit>();
-
-                            final state = cubit.state;
-                            final planet = cubit.selectedPlanet;
-
-                            if (state is! MetricsSuccess || planet == null) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Calculate your metrics first'),
-                                ),
-                              );
-                              return;
-                            }
-
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return ShareCard(
-                                  planetName: planet.name,
-                                  planetImage: planet.image,
-                                  weight: state.weight.toStringAsFixed(2),
-                                  age: state.age.toStringAsFixed(2),
-                                  jumpMultiplier:
-                                      'Jump ${(1 / planet.gravity).toStringAsFixed(1)}×',
-                                );
-                              },
-                            );
-                          },
-                          child: Text(
-                            "Share",
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: AppColors.white,
-                              fontFamily: FontFamily.audiowide,
-                            ),
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:model_viewer_plus/model_viewer_plus.dart';
 import 'package:space_app/core/components/background.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
 import 'package:space_app/features/home/components/custom_arrow_button.dart';
@@ -12,7 +13,6 @@ class PlanetInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Background(
       child: SafeArea(
         child: Padding(
@@ -23,7 +23,16 @@ class PlanetInfo extends StatelessWidget {
               spacing: 20,
               children: [
                 InfoAppBar(name: planet.name),
-                Center(child: Image.asset(planet.images)),
+                SizedBox(
+                  height: 300,
+                  width: 500,
+                  child: ModelViewer(
+                    autoPlay: true,
+                    autoRotate: true,
+                    cameraControls: true,
+                    src: planet.model_3D,
+                  ),
+                ),
                 AboutSection(about: planet.about),
                 StatsSection(planet: planet),
               ],
@@ -49,7 +58,7 @@ class InfoAppBar extends StatelessWidget {
           },
           direction: "left",
         ),
-        Spacer(),
+
         Text(
           name,
           style: Theme.of(context).textTheme.headlineSmall!.copyWith(
@@ -57,8 +66,6 @@ class InfoAppBar extends StatelessWidget {
             fontWeight: .w700,
           ),
         ),
-        Spacer(),
-        Spacer(),
       ],
     );
   }
