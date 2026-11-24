@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
-import 'package:space_app/features/settings/data/settings_data.dart';
+import 'package:space_app/features/settings/data/model/settings_data.dart';
 import 'member_avatar.dart';
 
 class SettingsPopup extends StatelessWidget {
@@ -32,7 +32,7 @@ class SettingsPopup extends StatelessWidget {
             child: Padding(
               padding: .all(20),
               child: Column(
-                mainAxisSize: MainAxisSize.min,
+                mainAxisSize: .min,
                 children: [
                   Row(
                     children: [
@@ -67,7 +67,7 @@ class SettingsPopup extends StatelessWidget {
                           ),
                           if (data.links.isNotEmpty) ...[
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: .spaceEvenly,
                               children: data.links
                                   .map((l) => MemberAvatar(link: l))
                                   .toList(),

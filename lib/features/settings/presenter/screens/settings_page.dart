@@ -4,7 +4,7 @@ import 'package:space_app/core/components/background.dart';
 import 'package:space_app/core/components/branding.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
-import 'package:space_app/features/settings/data/settings_data.dart';
+import 'package:space_app/features/settings/data/model/settings_data.dart';
 import 'package:space_app/features/settings/presenter/components/custome_row.dart';
 import 'package:space_app/features/settings/presenter/components/lang_selector.dart';
 import 'package:space_app/features/settings/presenter/components/settings_card.dart';
