@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
@@ -34,7 +35,7 @@ class CustomeRow extends StatelessWidget {
             SizedBox(width: 16),
             Expanded(
               child: Text(
-                title,
+                context.tr(title),
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   color: AppColors.white,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
 import 'package:space_app/features/quizes/data/models/quiz_category.dart';
@@ -42,7 +43,7 @@ class CategoryCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      category.title,
+                      context.tr(category.title),
                       style: TextStyle(
                         fontFamily: FontFamily.spaceGrotesk,
                         fontSize: 18,
@@ -52,7 +53,7 @@ class CategoryCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      category.description,
+                      context.tr(category.description),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
@@ -69,11 +70,13 @@ class CategoryCard extends StatelessWidget {
                       children: [
                         QuizInfoChip(
                           icon: Icons.help_outline,
-                          label: '${category.questionCount} Questions',
+                          label: context.trf('{count} Questions', {
+                            'count': category.questionCount,
+                          }),
                         ),
                         QuizInfoChip(
                           icon: Icons.emoji_events_outlined,
-                          label: 'Best: $highScore',
+                          label: context.trf('Best: {score}', {'score': highScore}),
                           highlighted: highScore > 0,
                         ),
                       ],

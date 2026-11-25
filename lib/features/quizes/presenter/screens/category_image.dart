@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:space_app/core/app_colors.dart';
 
-
-
 /// Category artwork with an icon fallback when the asset is missing.
 class CategoryImage extends StatelessWidget {
   const CategoryImage({
@@ -35,7 +33,7 @@ class CategoryImage extends StatelessWidget {
         child: Image.asset(
           image,
           fit: BoxFit.cover,
-          errorBuilder: (_, __, ___) => Icon(
+          errorBuilder: (_, _, _) => Icon(
             _icons[categoryId] ?? Icons.help_outline,
             size: size * 0.45,
             color: AppColors.primary,

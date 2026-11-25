@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
 
@@ -45,7 +46,7 @@ class CustomTextField extends StatelessWidget {
                 fontFamily: FontFamily.spaceGrotesk,
               ),
               decoration: InputDecoration(
-                hintText: text,
+                hintText: context.tr(text),
                 hintStyle: TextStyle(
                   color: AppColors.white.withValues(alpha: .6),
                   fontSize: 13,

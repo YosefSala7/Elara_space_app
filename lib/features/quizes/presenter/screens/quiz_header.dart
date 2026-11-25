@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
 import 'score_badge.dart';
@@ -18,17 +19,17 @@ class QuizHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'TEST YOUR KNOWLEDGE',
+                context.tr('TEST YOUR KNOWLEDGE'),
                 style: TextStyle(
                   fontFamily: FontFamily.spaceGrotesk,
                   fontSize: 14,
-                  letterSpacing: 1.2,
+                  letterSpacing: context.ls(1.2),
                   color: AppColors.white,
                 ),
               ),
               const SizedBox(height: 8),
               Text(
-                'Cosmic Quiz',
+                context.tr('Cosmic Quiz'),
                 style: TextStyle(
                   fontFamily: FontFamily.spaceGrotesk,
                   fontSize: 24,

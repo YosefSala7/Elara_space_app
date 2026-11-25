@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/components/background.dart';
 import 'package:space_app/features/learn/data/models/video.dart';
@@ -67,7 +68,7 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
                 Row(
                   children: [
                     Text(
-                      v.category.toUpperCase(),
+                      context.tr(v.category).toUpperCase(),
                       style: t.labelSmall?.copyWith(color: AppColors.primary),
                     ),
                     const SizedBox(width: 10),
@@ -80,7 +81,7 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
                     if (v.level != null) ...[
                       const SizedBox(width: 10),
                       Text(
-                        '• ${v.level}',
+                        '• ${context.tr(v.level!)}',
                         style: t.labelSmall?.copyWith(
                           color: AppColors.secorndary,
                         ),
@@ -90,12 +91,12 @@ class _VideoDetailScreenState extends State<VideoDetailScreen> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  v.title,
+                  context.tr(v.title),
                   style: t.titleLarge?.copyWith(color: AppColors.white),
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  v.description,
+                  context.tr(v.description),
                   style: t.labelSmall?.copyWith(
                     color: AppColors.secorndary,
                     height: 1.6,

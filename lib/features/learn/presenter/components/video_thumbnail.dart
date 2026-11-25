@@ -28,7 +28,7 @@ class VideoThumbnail extends StatelessWidget {
               duration: const Duration(milliseconds: 400),
               child: image,
             ),
-            errorBuilder: (_, __, ___) => const DecoratedBox(
+            errorBuilder: (_, _, _) => const DecoratedBox(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
@@ -38,7 +38,7 @@ class VideoThumbnail extends StatelessWidget {
               ),
             ),
           ),
-          if (child != null) child!,
+          ?child,
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
 
@@ -42,17 +43,17 @@ class QuestionCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                categoryLabel.toUpperCase(),
+                context.tr(categoryLabel).toUpperCase(),
                 style: TextStyle(
                   fontFamily: FontFamily.spaceGrotesk,
                   fontSize: 12,
-                  letterSpacing: 1,
+                  letterSpacing: context.ls(1),
                   color: AppColors.primary,
                 ),
               ),
               const SizedBox(height: 10),
               Text(
-                question,
+                context.tr(question),
                 style: TextStyle(
                   fontFamily: FontFamily.spaceGrotesk,
                   fontSize: 18,
@@ -73,7 +74,7 @@ class QuestionCard extends StatelessWidget {
                 width: imageSize,
                 height: imageSize,
                 fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                errorBuilder: (_, _, _) => const SizedBox.shrink(),
               ),
             ),
           ),

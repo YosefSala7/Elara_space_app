@@ -2,6 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:coverflow_carousel/coverflow_carousel.dart';
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:space_app/core/components/background.dart';
@@ -41,11 +42,11 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               spacing: 40,
               children: [
-                Text("Explore", style: textTheme.headlineSmall),
+                Text(context.tr("Explore"), style: textTheme.headlineSmall),
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    "Which planet\nwould you like to explore?",
+                    context.tr("Which planet\nwould you like to explore?"),
                     style: textTheme.headlineSmall,
                   ),
                 ),BlocProvider(

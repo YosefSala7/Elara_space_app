@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
 import 'package:space_app/features/onboarding/data/models/onboarding_model.dart';
@@ -20,17 +21,17 @@ class OnboardingContent extends StatelessWidget {
             crossAxisAlignment: .start,
             children: [
               Text(
-                model.label,
+                context.tr(model.label),
                 style: TextStyle(
                   color: AppColors.primary,
                   fontSize: 10,
-                  letterSpacing: 1.5,
+                  letterSpacing: context.ls(1.5),
                   fontFamily: FontFamily.audiowide,
                 ),
               ),
               SizedBox(height: 8),
               Text(
-                model.title,
+                context.tr(model.title),
                 style: TextStyle(
                   color: AppColors.white,
                   fontSize: 24,
@@ -40,7 +41,7 @@ class OnboardingContent extends StatelessWidget {
               ),
               SizedBox(height: 8),
               Text(
-                model.description,
+                context.tr(model.description),
                 style: TextStyle(
                   color: AppColors.secorndary,
                   fontSize: 11,

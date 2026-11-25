@@ -1,10 +1,10 @@
-
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:flutter/rendering.dart';
 import 'package:gal/gal.dart';
 import 'package:path_provider/path_provider.dart';
@@ -45,21 +45,16 @@ class _ShareCardState extends State<ShareCard> {
     try {
       await WidgetsBinding.instance.endOfFrame;
 
-      final renderObject =
-          _cardKey.currentContext?.findRenderObject();
+      final renderObject = _cardKey.currentContext?.findRenderObject();
 
       if (renderObject is! RenderRepaintBoundary) {
         return null;
       }
 
-      final ui.Image image = await renderObject.toImage(
-        pixelRatio: 3.0,
-      );
+      final ui.Image image = await renderObject.toImage(pixelRatio: 3.0);
 
       try {
-        final byteData = await image.toByteData(
-          format: ui.ImageByteFormat.png,
-        );
+        final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
 
         return byteData?.buffer.asUint8List();
       } finally {
@@ -79,13 +74,12 @@ class _ShareCardState extends State<ShareCard> {
 
     final directory = await getTemporaryDirectory();
 
-    final safePlanetName = widget.planetName
-        .toLowerCase()
-        .replaceAll(RegExp(r'[^a-z0-9_-]'), '_');
-
-    final file = File(
-      '${directory.path}/planet_${safePlanetName}_share.png',
+    final safePlanetName = widget.planetName.toLowerCase().replaceAll(
+      RegExp(r'[^a-z0-9_-]'),
+      '_',
     );
+
+    final file = File('${directory.path}/planet_${safePlanetName}_share.png');
 
     await file.writeAsBytes(bytes, flush: true);
 
@@ -107,8 +101,7 @@ class _ShareCardState extends State<ShareCard> {
         throw Exception('Could not capture the image.');
       }
 
-      if (!kIsWeb &&
-          (Platform.isAndroid || Platform.isIOS)) {
+      if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
         await Gal.putImage(file.path);
       } else if (!kIsWeb && Platform.isWindows) {
         final downloadsDirectory = await getDownloadsDirectory();
@@ -135,8 +128,8 @@ class _ShareCardState extends State<ShareCard> {
         SnackBar(
           content: Text(
             Platform.isWindows
-                ? 'Image saved to Downloads successfully!'
-                : 'Image saved to Gallery successfully!',
+                ? context.tr('Image saved to Downloads successfully!')
+                : context.tr('Image saved to Gallery successfully!'),
           ),
         ),
       );
@@ -145,7 +138,7 @@ class _ShareCardState extends State<ShareCard> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Download failed: $e'),
+          content: Text(context.trf('Download failed: {error}', {'error': e})),
         ),
       );
     } finally {
@@ -161,6 +154,11 @@ class _ShareCardState extends State<ShareCard> {
   Future<void> _shareImage() async {
     if (_isProcessing) return;
 
+    final shareText = context.trf('Check out my stats on {planet}! 🚀', {
+      'planet': context.tr(widget.planetName),
+    });
+    final shareTitle = context.tr('My Space Stats');
+
     setState(() {
       _isProcessing = true;
     });
@@ -174,14 +172,9 @@ class _ShareCardState extends State<ShareCard> {
 
       await SharePlus.instance.share(
         ShareParams(
-          files: [
-            XFile(
-              file.path,
-              mimeType: 'image/png',
-            ),
-          ],
-          text: 'Check out my stats on ${widget.planetName}! 🚀',
-          title: 'My Space Stats',
+          files: [XFile(file.path, mimeType: 'image/png')],
+          text: shareText,
+          title: shareTitle,
         ),
       );
     } catch (e) {
@@ -189,7 +182,7 @@ class _ShareCardState extends State<ShareCard> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Sharing failed: $e'),
+          content: Text(context.trf('Sharing failed: {error}', {'error': e})),
         ),
       );
     } finally {
@@ -205,18 +198,12 @@ class _ShareCardState extends State<ShareCard> {
   Widget build(BuildContext context) {
     return Dialog(
       backgroundColor: Colors.transparent,
-      insetPadding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 24,
-      ),
+      insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       child: ConstrainedBox(
-        constraints: const BoxConstraints(
-          maxWidth: 560,
-        ),
+        constraints: const BoxConstraints(maxWidth: 560),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-
             // Only this part will be captured.
             RepaintBoundary(
               key: _cardKey,
@@ -302,7 +289,6 @@ class _ShareVisualCard extends StatelessWidget {
           return Stack(
             clipBehavior: Clip.none,
             children: [
-
               // Main card container.
               Positioned(
                 left: width * 0.055,
@@ -326,12 +312,11 @@ class _ShareVisualCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         // Title.
                         Align(
                           alignment: Alignment.topCenter,
                           child: Text(
-                            'Share',
+                            context.tr('Share'),
                             style: TextStyle(
                               color: const Color(0xFFE53935),
                               fontSize: width * 0.038,
@@ -344,7 +329,9 @@ class _ShareVisualCard extends StatelessWidget {
 
                         // Subtitle.
                         Text(
-                          'On $planetName you weigh',
+                          context.trf('On {planet} you weigh', {
+                            'planet': context.tr(planetName),
+                          }),
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: width * 0.035,
@@ -356,8 +343,7 @@ class _ShareVisualCard extends StatelessWidget {
 
                         // Weight.
                         Row(
-                          crossAxisAlignment:
-                              CrossAxisAlignment.baseline,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
                           textBaseline: TextBaseline.alphabetic,
                           children: [
                             Text(
@@ -372,7 +358,7 @@ class _ShareVisualCard extends StatelessWidget {
                             const SizedBox(width: 10),
 
                             Text(
-                              'Kg',
+                              context.tr('Kg'),
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: width * 0.048,
@@ -388,13 +374,9 @@ class _ShareVisualCard extends StatelessWidget {
                           spacing: 8,
                           runSpacing: 8,
                           children: [
-                            _InfoBadge(
-                              text: age,
-                            ),
+                            _InfoBadge(text: age),
 
-                            _InfoBadge(
-                              text: jumpMultiplier,
-                            ),
+                            _InfoBadge(text: jumpMultiplier),
                           ],
                         ),
                       ],
@@ -413,7 +395,7 @@ class _ShareVisualCard extends StatelessWidget {
                   child: Image(
                     image: planetImage.image,
                     fit: BoxFit.contain,
-                    errorBuilder: (_, __, ___) {
+                    errorBuilder: (_, _, _) {
                       return const Icon(
                         Icons.public,
                         color: Colors.white,
@@ -438,17 +420,12 @@ class _ShareVisualCard extends StatelessWidget {
 class _InfoBadge extends StatelessWidget {
   final String text;
 
-  const _InfoBadge({
-    required this.text,
-  });
+  const _InfoBadge({required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 12,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       decoration: BoxDecoration(
         color: const Color(0xFF2C2C2E),
         borderRadius: BorderRadius.circular(30),
@@ -496,9 +473,7 @@ class _ShareAction extends StatelessWidget {
               decoration: BoxDecoration(
                 color: const Color(0xFF2C2C2E),
                 shape: BoxShape.circle,
-                border: Border.all(
-                  color: Colors.white24,
-                ),
+                border: Border.all(color: Colors.white24),
               ),
               child: Center(
                 child: isLoading
@@ -510,11 +485,7 @@ class _ShareAction extends StatelessWidget {
                           color: Colors.white,
                         ),
                       )
-                    : Icon(
-                        icon,
-                        color: Colors.white,
-                        size: 31,
-                      ),
+                    : Icon(icon, color: Colors.white, size: 31),
               ),
             ),
 
@@ -523,11 +494,8 @@ class _ShareAction extends StatelessWidget {
             FittedBox(
               fit: BoxFit.scaleDown,
               child: Text(
-                label,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                ),
+                context.tr(label),
+                style: const TextStyle(color: Colors.white, fontSize: 14),
               ),
             ),
           ],

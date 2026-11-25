@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/features/layout/layout_view.dart';
 import 'package:space_app/features/onboarding/presenter/widgets/page_indictor.dart';
@@ -30,7 +31,7 @@ class OnbordingController extends StatelessWidget {
               alignment: .topRight,
               child: GestureDetector(
                 onTap: onSkip,
-                child: Text('Skip', style: TextStyle(color: AppColors.white)),
+                child: Text(context.tr('Skip'), style: TextStyle(color: AppColors.white)),
               ),
             ),
 
@@ -60,7 +61,9 @@ class OnbordingController extends StatelessWidget {
                     mainAxisSize: .min,
                     children: [
                       Text(
-                        currentPage == pageIndex - 1 ? 'Get Started' : "Next",
+                        currentPage == pageIndex - 1
+                            ? context.tr('Get Started')
+                            : context.tr("Next"),
                         style: TextStyle(fontSize: 12),
                       ),
                       SizedBox(width: 6),

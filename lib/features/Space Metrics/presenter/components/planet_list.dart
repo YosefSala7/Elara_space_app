@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
@@ -52,7 +53,7 @@ class _PlanetListState extends State<PlanetList> {
                     SizedBox(height: 110, child: planets[index].image),
                     const SizedBox(height: 8),
                     Text(
-                      planets[index].name,
+                      context.tr(planets[index].name),
                       style: TextStyle(
                         color: AppColors.white,
                         fontFamily: FontFamily.spaceGrotesk,

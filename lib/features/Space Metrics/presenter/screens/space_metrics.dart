@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/components/background.dart';
@@ -39,14 +40,14 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
 
     if (weight == null || age == null || weight <= 0 || age <= 0) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter a valid weight and age')),
+        SnackBar(content: Text(context.tr('Please enter a valid weight and age'))),
       );
       return;
     }
 
     if (context.read<MetricsCubit>().selectedPlanet == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please select a planet first')),
+        SnackBar(content: Text(context.tr('Please select a planet first'))),
       );
       return;
     }
@@ -86,7 +87,7 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
                       // Title
                       Center(
                         child: Text(
-                          "Space Metrics",
+                          context.tr("Space Metrics"),
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 22,
@@ -101,7 +102,7 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Text(
-                          "Your Normal information :",
+                          context.tr("Your Normal information :"),
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
@@ -141,7 +142,7 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Text(
-                          "Your Information in Space:",
+                          context.tr("Your Information in Space:"),
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
@@ -192,7 +193,7 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
                                   calculate(context);
                                 },
                                 child: Text(
-                                  "Calculate",
+                                  context.tr("Calculate"),
                                   style: TextStyle(
                                     fontSize: 18,
                                     color: AppColors.white,
@@ -217,9 +218,9 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
                                   if (state is! MetricsSuccess ||
                                       planet == null) {
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
+                                      SnackBar(
                                         content: Text(
-                                          'Calculate your metrics first',
+                                          context.tr('Calculate your metrics first'),
                                         ),
                                       ),
                                     );
@@ -235,13 +236,15 @@ class _SpaceMetricsState extends State<SpaceMetrics> {
                                         weight: state.weight.toStringAsFixed(2),
                                         age: state.age.toStringAsFixed(2),
                                         jumpMultiplier:
-                                            'Jump ${(1 / planet.gravity).toStringAsFixed(1)}×',
+                                            context.trf('Jump {x}×', {
+                                              'x': (1 / planet.gravity).toStringAsFixed(1),
+                                            }),
                                       );
                                     },
                                   );
                                 },
                                 child: Text(
-                                  "Share",
+                                  context.tr("Share"),
                                   style: TextStyle(
                                     fontSize: 20,
                                     color: AppColors.white,
