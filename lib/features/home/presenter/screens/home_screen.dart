@@ -48,9 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     "Which planet\nwould you like to explore?",
                     style: textTheme.headlineSmall,
                   ),
-                ),BlocProvider(
-                  create: (context) => PlanetsApiCubit()..getPlanets(),
-                  child:
+                ),
                 BlocBuilder<PlanetsApiCubit, PlanetsState>(
                   builder: (context, state) {
                     if (state.isLoading) {
@@ -288,7 +286,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     );
                   },
-                ),)
+                ),
               ],
             ),
           ),
