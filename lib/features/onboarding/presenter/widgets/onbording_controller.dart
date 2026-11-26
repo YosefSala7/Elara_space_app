@@ -8,6 +8,7 @@ class OnbordingController extends StatelessWidget {
   final PageController pageController;
   final VoidCallback onNext;
   final VoidCallback onSkip;
+
   const OnbordingController({
     super.key,
     required this.currentPage,
@@ -21,26 +22,24 @@ class OnbordingController extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: .all(24),
+        padding: const EdgeInsets.all(24),
         child: Column(
-          mainAxisAlignment: .spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Align(
-              alignment: .topRight,
+              alignment: Alignment.topRight,
               child: GestureDetector(
                 onTap: onSkip,
                 child: Text('Skip', style: TextStyle(color: AppColors.white)),
               ),
             ),
-
             Row(
-              mainAxisAlignment: .spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 PageIndictor(
                   pageController: pageController,
                   pageIndex: pageIndex,
                 ),
-
                 ElevatedButton(
                   onPressed: onNext,
                   style: ElevatedButton.styleFrom(
@@ -52,14 +51,14 @@ class OnbordingController extends StatelessWidget {
                     ),
                   ),
                   child: Row(
-                    mainAxisSize: .min,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        currentPage == pageIndex - 1 ? 'Get Started' : "Next",
-                        style: TextStyle(fontSize: 12),
+                        currentPage == pageIndex - 1 ? 'Get Started' : 'Next',
+                        style: const TextStyle(fontSize: 12),
                       ),
-                      SizedBox(width: 6),
-                      Icon(Icons.arrow_forward, size: 14),
+                      const SizedBox(width: 6),
+                      const Icon(Icons.arrow_forward, size: 14),
                     ],
                   ),
                 ),

@@ -73,6 +73,9 @@ class $AssetsIconsGen {
 class $AssetsImgsGen {
   const $AssetsImgsGen();
 
+  /// File path: assets/imgs/app_icon.jpeg
+  AssetGenImage get appIcon => const AssetGenImage('assets/imgs/app_icon.jpeg');
+
   /// File path: assets/imgs/earth.png
   AssetGenImage get earth => const AssetGenImage('assets/imgs/earth.png');
 
@@ -102,6 +105,7 @@ class $AssetsImgsGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    appIcon,
     earth,
     jupiter,
     mars,
@@ -117,16 +121,49 @@ class $AssetsImgsGen {
 class $AssetsLottiesGen {
   const $AssetsLottiesGen();
 
+  /// File path: assets/lotties/Astronaut with Tablet.json
+  LottieGenImage get astronautWithTablet =>
+      const LottieGenImage('assets/lotties/Astronaut with Tablet.json');
+
+  /// File path: assets/lotties/Rocket in space.json
+  LottieGenImage get rocketInSpace =>
+      const LottieGenImage('assets/lotties/Rocket in space.json');
+
   /// File path: assets/lotties/Rocket loader.json
   LottieGenImage get rocketLoader =>
       const LottieGenImage('assets/lotties/Rocket loader.json');
+
+  /// File path: assets/lotties/Rocket_Lauch.json
+  LottieGenImage get rocketLauch =>
+      const LottieGenImage('assets/lotties/Rocket_Lauch.json');
+
+  /// File path: assets/lotties/astronaut say Hello.json
+  LottieGenImage get astronautSayHello =>
+      const LottieGenImage('assets/lotties/astronaut say Hello.json');
+
+  /// File path: assets/lotties/astronaut_hello.json
+  LottieGenImage get astronautHello =>
+      const LottieGenImage('assets/lotties/astronaut_hello.json');
 
   /// File path: assets/lotties/falling-stars-background.json
   LottieGenImage get fallingStarsBackground =>
       const LottieGenImage('assets/lotties/falling-stars-background.json');
 
+  /// File path: assets/lotties/planet_1.json
+  LottieGenImage get planet1 =>
+      const LottieGenImage('assets/lotties/planet_1.json');
+
   /// List of all assets
-  List<LottieGenImage> get values => [rocketLoader, fallingStarsBackground];
+  List<LottieGenImage> get values => [
+    astronautWithTablet,
+    rocketInSpace,
+    rocketLoader,
+    rocketLauch,
+    astronautSayHello,
+    astronautHello,
+    fallingStarsBackground,
+    planet1,
+  ];
 }
 
 class $AssetsIconsNavbarGen {
