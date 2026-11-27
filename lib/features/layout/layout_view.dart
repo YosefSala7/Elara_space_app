@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
+import 'package:space_app/features/Space%20Metrics/presenter/screens/space_metrics.dart';
 import 'package:space_app/features/home/presenter/screens/home_screen.dart';
 import 'package:space_app/features/learn/presenter/screens/space_academy_screen.dart';
+import 'package:space_app/features/quizes/presenter/screens/quiz_categories_screen.dart';
 import 'package:space_app/features/settings/presenter/screens/settings_page.dart';
 
 class LayoutView extends StatefulWidget {
@@ -17,9 +20,9 @@ class _LayoutViewState extends State<LayoutView> {
   int _index = 0;
   List<Widget> screens = [
     HomeScreen(),
-    const Center(child: Text("Metrics")),
+    SpaceMetrics(),
     SpaceAcademyScreen(),
-    const Center(child: Text("Quizes")),
+    QuizCategoriesScreen(),
     SettingsPage(),
   ];
   @override
@@ -98,7 +101,7 @@ class _LayoutViewState extends State<LayoutView> {
                               ),
                             ),
                           ),
-                          label: "Home",
+                          label: context.tr("Home"),
                         ),
 
                         // 2. Metrics
@@ -129,7 +132,7 @@ class _LayoutViewState extends State<LayoutView> {
                               ),
                             ),
                           ),
-                          label: "Metrics",
+                          label: context.tr("Metrics"),
                         ),
 
                         // 3. Learn
@@ -164,7 +167,7 @@ class _LayoutViewState extends State<LayoutView> {
                               ),
                             ),
                           ),
-                          label: "Learn",
+                          label: context.tr("Learn"),
                         ),
 
                         // 4. Quizes
@@ -203,7 +206,7 @@ class _LayoutViewState extends State<LayoutView> {
                               ),
                             ),
                           ),
-                          label: "Quizes",
+                          label: context.tr("Quizes"),
                         ),
 
                         // 5. Settings
@@ -242,7 +245,7 @@ class _LayoutViewState extends State<LayoutView> {
                               ),
                             ),
                           ),
-                          label: "Settings",
+                          label: context.tr("Settings"),
                         ),
                       ],
                     ),

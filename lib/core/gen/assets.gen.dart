@@ -29,6 +29,18 @@ class $AssetsIconsGen {
   /// File path: assets/icons/Vector22.svg
   SvgGenImage get vector22 => const SvgGenImage('assets/icons/Vector22.svg');
 
+  /// File path: assets/icons/age-range.png
+  AssetGenImage get ageRange =>
+      const AssetGenImage('assets/icons/age-range.png');
+
+  /// File path: assets/icons/age-range_7187713.png
+  AssetGenImage get ageRange7187713 =>
+      const AssetGenImage('assets/icons/age-range_7187713.png');
+
+  /// File path: assets/icons/fi-rr-calendar.svg
+  SvgGenImage get fiRrCalendar =>
+      const SvgGenImage('assets/icons/fi-rr-calendar.svg');
+
   /// File path: assets/icons/iconsax-chart.svg
   SvgGenImage get iconsaxChart =>
       const SvgGenImage('assets/icons/iconsax-chart.svg');
@@ -45,6 +57,10 @@ class $AssetsIconsGen {
   SvgGenImage get iconsaxSaveMinus =>
       const SvgGenImage('assets/icons/iconsax-save-minus.svg');
 
+  /// File path: assets/icons/iconsax-weight.svg
+  SvgGenImage get iconsaxWeight =>
+      const SvgGenImage('assets/icons/iconsax-weight.svg');
+
   /// File path: assets/icons/logout-svgrepo-com.svg
   SvgGenImage get logoutSvgrepoCom =>
       const SvgGenImage('assets/icons/logout-svgrepo-com.svg');
@@ -52,26 +68,44 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/navbar
   $AssetsIconsNavbarGen get navbar => const $AssetsIconsNavbarGen();
 
+  /// File path: assets/icons/scale.png
+  AssetGenImage get scale => const AssetGenImage('assets/icons/scale.png');
+
   /// File path: assets/icons/worldwide 1.svg
   SvgGenImage get worldwide1 =>
       const SvgGenImage('assets/icons/worldwide 1.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [
+  List<dynamic> get values => [
     arrowLeft,
     arrowRight,
     vector22,
+    ageRange,
+    ageRange7187713,
+    fiRrCalendar,
     iconsaxChart,
     iconsaxLanguageCircle,
     iconsaxMessageBubble,
     iconsaxSaveMinus,
+    iconsaxWeight,
     logoutSvgrepoCom,
+    scale,
     worldwide1,
   ];
 }
 
 class $AssetsImgsGen {
   const $AssetsImgsGen();
+
+  /// File path: assets/imgs/Frame 1.png
+  AssetGenImage get frame1 => const AssetGenImage('assets/imgs/Frame 1.png');
+
+  /// File path: assets/imgs/Rectangle 4.png
+  AssetGenImage get rectangle4 =>
+      const AssetGenImage('assets/imgs/Rectangle 4.png');
+
+  /// File path: assets/imgs/app_icon.jpeg
+  AssetGenImage get appIcon => const AssetGenImage('assets/imgs/app_icon.jpeg');
 
   /// File path: assets/imgs/earth.png
   AssetGenImage get earth => const AssetGenImage('assets/imgs/earth.png');
@@ -91,9 +125,6 @@ class $AssetsImgsGen {
   /// File path: assets/imgs/saturn.png
   AssetGenImage get saturn => const AssetGenImage('assets/imgs/saturn.png');
 
-  /// File path: assets/imgs/sun.png
-  AssetGenImage get sun => const AssetGenImage('assets/imgs/sun.png');
-
   /// File path: assets/imgs/uranus.png
   AssetGenImage get uranus => const AssetGenImage('assets/imgs/uranus.png');
 
@@ -102,13 +133,15 @@ class $AssetsImgsGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    frame1,
+    rectangle4,
+    appIcon,
     earth,
     jupiter,
     mars,
     mercury,
     neptune,
     saturn,
-    sun,
     uranus,
     venus,
   ];
@@ -117,16 +150,40 @@ class $AssetsImgsGen {
 class $AssetsLottiesGen {
   const $AssetsLottiesGen();
 
+  /// File path: assets/lotties/Astronaut with Tablet.json
+  LottieGenImage get astronautWithTablet =>
+      const LottieGenImage('assets/lotties/Astronaut with Tablet.json');
+
+  /// File path: assets/lotties/Astronaut_Space_Error_Animation_v2.json
+  LottieGenImage get astronautSpaceErrorAnimationV2 => const LottieGenImage(
+    'assets/lotties/Astronaut_Space_Error_Animation_v2.json',
+  );
+
   /// File path: assets/lotties/Rocket loader.json
   LottieGenImage get rocketLoader =>
       const LottieGenImage('assets/lotties/Rocket loader.json');
+
+  /// File path: assets/lotties/astronaut say Hello.json
+  LottieGenImage get astronautSayHello =>
+      const LottieGenImage('assets/lotties/astronaut say Hello.json');
+
+  /// File path: assets/lotties/astronaut_hello.json
+  LottieGenImage get astronautHello =>
+      const LottieGenImage('assets/lotties/astronaut_hello.json');
 
   /// File path: assets/lotties/falling-stars-background.json
   LottieGenImage get fallingStarsBackground =>
       const LottieGenImage('assets/lotties/falling-stars-background.json');
 
   /// List of all assets
-  List<LottieGenImage> get values => [rocketLoader, fallingStarsBackground];
+  List<LottieGenImage> get values => [
+    astronautWithTablet,
+    astronautSpaceErrorAnimationV2,
+    rocketLoader,
+    astronautSayHello,
+    astronautHello,
+    fallingStarsBackground,
+  ];
 }
 
 class $AssetsIconsNavbarGen {

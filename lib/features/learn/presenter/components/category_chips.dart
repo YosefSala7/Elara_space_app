@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/features/learn/data/models/video.dart';
 
@@ -24,7 +25,7 @@ class CategoryChips extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 20),
         itemCount: filters.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 10),
+        separatorBuilder: (_, _) => const SizedBox(width: 10),
         itemBuilder: (_, i) {
           final f = filters[i];
           final isSelected = f == selected;
@@ -48,7 +49,7 @@ class CategoryChips extends StatelessWidget {
                   color: isSelected ? AppColors.white : AppColors.secorndary,
                   fontWeight: FontWeight.w600,
                 ),
-                child: Text(f.label),
+                child: Text(context.tr(f.label)),
               ),
             ),
           );

@@ -1,40 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:space_app/features/home/presenter/manager/planets_api_cubit.dart';
+import 'package:space_app/features/settings/presenter/manager/locale_cubit.dart';
 import 'lang_button.dart';
 
-class LanguageSelector extends StatefulWidget {
+class LanguageSelector extends StatelessWidget {
   const LanguageSelector({super.key});
 
   @override
-  State<LanguageSelector> createState() => _LanguageSelectorState();
-}
-
-class _LanguageSelectorState extends State<LanguageSelector> {
-  String selectedLanguage = 'English';
-
-  @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        LangButton(
-          text: 'English',
-          isSelected: selectedLanguage == 'English',
-          onTap: () {
-            setState(() {
-              selectedLanguage = 'English';
-            });
-          },
-        ),
-        LangButton(
-          text: 'Arabic',
-          isSelected: selectedLanguage == 'Arabic',
-          onTap: () {
-            setState(() {
-              selectedLanguage = 'Arabic';
-            });
-          },
-        ),
-      ],
+    return BlocBuilder<LocaleCubit, Locale?>(
+      builder: (context, locale) {
+        // If the user never chose, show the language the app is really using.
+        final current =
+            locale?.languageCode ??
+            Localizations.localeOf(context).languageCode;
+
+        return Directionality(
+          textDirection: .ltr,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              LangButton(
+                text: 'English',
+                isSelected: current == 'en',
+                onTap: () {
+                  context.read<LocaleCubit>().setLanguage('en');
+                  context.read<PlanetsApiCubit>().getPlanets('en');
+                },
+              ),
+              LangButton(
+                text: 'Arabic',
+                isSelected: current == 'ar',
+                onTap: () {
+                  context.read<LocaleCubit>().setLanguage('ar');
+                  context.read<PlanetsApiCubit>().getPlanets('ar');
+                },
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

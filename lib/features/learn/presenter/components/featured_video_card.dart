@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/features/learn/data/models/video.dart';
 
@@ -42,7 +43,7 @@ class FeaturedVideoCard extends StatelessWidget {
                     color: AppColors.primary,
                     borderRadius: BorderRadius.circular(6),
                   ),
-                  child: Text('FEATURED',
+                  child: Text(context.tr('FEATURED'),
                       style: t.labelSmall?.copyWith(
                           color: AppColors.white, fontWeight: FontWeight.w700)),
                 ),
@@ -66,11 +67,13 @@ class FeaturedVideoCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'NEW LESSON • ${video.formattedDuration}',
+                      context.trf('NEW LESSON • {duration}', {
+                        'duration': video.formattedDuration,
+                      }),
                       style: t.labelSmall?.copyWith(color: AppColors.secorndary),
                     ),
                     const SizedBox(height: 6),
-                    Text(video.title,
+                    Text(context.tr(video.title),
                         style: t.titleLarge?.copyWith(color: AppColors.white)),
                   ],
                 ),

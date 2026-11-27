@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:space_app/core/app_colors.dart';
@@ -16,11 +17,13 @@ class LangButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LiquidGlassLayer(
+    return
+    LiquidGlassLayer(
       settings: LiquidGlassSettings.ios27RegularDark(),
       child: LiquidGlass(
         shape: LiquidRoundedSuperellipse(borderRadius: 20),
-        child: Bounceable(
+        child:
+         Bounceable(
           onTap: onTap,
           child: Container(
             padding: .symmetric(horizontal: 25, vertical: 10),
@@ -35,7 +38,7 @@ class LangButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(24),
             ),
             child: Text(
-              text,
+              context.tr(text),
               style: TextStyle(
                 color: AppColors.white,
                 fontFamily: "SpaceGrotesk",
