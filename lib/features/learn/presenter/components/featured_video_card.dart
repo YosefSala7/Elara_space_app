@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:space_app/core/app_colors.dart';
-import 'package:space_app/features/learn/presenter/components/video.dart';
+import 'package:space_app/features/learn/data/models/video.dart';
 
 import 'video_thumbnail.dart';
 
