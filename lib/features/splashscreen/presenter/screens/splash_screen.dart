@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
     Future.delayed(Duration(seconds: 5), () {
       if (!mounted) return;
       Navigator.pushReplacementNamed(context, OnboardingScreen.onboardingRout);
-      context.read<PlanetsApiCubit>().getPlanets();
+      context.read<PlanetsApiCubit>().getPlanets(Localizations.localeOf(context).languageCode);
     });
     _controller = AnimationController(
       vsync: this,

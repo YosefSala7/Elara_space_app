@@ -4,9 +4,11 @@ import 'package:space_app/features/home/presenter/manager/planets_api_states.dar
 
 class PlanetsApiCubit extends Cubit<PlanetsState> {
   PlanetsApiCubit() : super(PlanetsState());
-  Future<void> getPlanets() async {
+  Future<void> getPlanets(String localCode) async {
     emit(PlanetsState(isLoading: true));
-    final result = await getPlanetsApi();
+    final result = localCode == "en"
+        ? await getEnPlanetsApi()
+        : await getArPlanetsApi();
     result.fold(
       (error) {
         emit(PlanetsState(error: error, isLoading: false));
