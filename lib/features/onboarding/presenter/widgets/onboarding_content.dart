@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:space_app/l10n/app_localizations.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
 import 'package:space_app/features/onboarding/data/models/onboarding_model.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 
 class OnboardingContent extends StatelessWidget {
   final OnboardingModel model;

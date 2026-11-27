@@ -125,9 +125,6 @@ class $AssetsImgsGen {
   /// File path: assets/imgs/saturn.png
   AssetGenImage get saturn => const AssetGenImage('assets/imgs/saturn.png');
 
-  /// File path: assets/imgs/sun.png
-  AssetGenImage get sun => const AssetGenImage('assets/imgs/sun.png');
-
   /// File path: assets/imgs/uranus.png
   AssetGenImage get uranus => const AssetGenImage('assets/imgs/uranus.png');
 
@@ -145,7 +142,6 @@ class $AssetsImgsGen {
     mercury,
     neptune,
     saturn,
-    sun,
     uranus,
     venus,
   ];
@@ -153,6 +149,10 @@ class $AssetsImgsGen {
 
 class $AssetsLottiesGen {
   const $AssetsLottiesGen();
+
+  /// File path: assets/lotties/Astronaut with Tablet.json
+  LottieGenImage get astronautWithTablet =>
+      const LottieGenImage('assets/lotties/Astronaut with Tablet.json');
 
   /// File path: assets/lotties/Astronaut_Space_Error_Animation_v2.json
   LottieGenImage get astronautSpaceErrorAnimationV2 => const LottieGenImage(
@@ -163,14 +163,25 @@ class $AssetsLottiesGen {
   LottieGenImage get rocketLoader =>
       const LottieGenImage('assets/lotties/Rocket loader.json');
 
+  /// File path: assets/lotties/astronaut say Hello.json
+  LottieGenImage get astronautSayHello =>
+      const LottieGenImage('assets/lotties/astronaut say Hello.json');
+
+  /// File path: assets/lotties/astronaut_hello.json
+  LottieGenImage get astronautHello =>
+      const LottieGenImage('assets/lotties/astronaut_hello.json');
+
   /// File path: assets/lotties/falling-stars-background.json
   LottieGenImage get fallingStarsBackground =>
       const LottieGenImage('assets/lotties/falling-stars-background.json');
 
   /// List of all assets
   List<LottieGenImage> get values => [
+    astronautWithTablet,
     astronautSpaceErrorAnimationV2,
     rocketLoader,
+    astronautSayHello,
+    astronautHello,
     fallingStarsBackground,
   ];
 }

@@ -2,15 +2,18 @@
 // Add new entries here to translate new strings; missing keys fall back to English.
 
 const Map<String, String> arStrings = {
-  '01 — EXPLORE': '01 — استكشف',
-  '02 — LEARN': '02 — تعلّم',
+  '01 — LIFTOFF': '01 — الإقلاع',
+  '02 — DISCOVER': '02 — اكتشف',
   '03 — EXPERIENCE': '03 — جرّب',
-  'Explore every world': 'استكشف كل عالم',
-  'Travel across our digital planets, a modern-day guide built for curious minds.':
-      'سافر عبر كواكبنا الرقمية، دليل عصري صُمّم للعقول الفضولية.',
-  'See what you would weigh on a different world with accurate gravity comparisons.':
-      'اكتشف كم سيكون وزنك على عالم مختلف من خلال مقارنات دقيقة للجاذبية.',
-  'Feel other gravity': 'اشعر بجاذبية أخرى',
+  'You\'ve reached space': 'لقد وصلت إلى الفضاء',
+  'Hello, explorer!': 'مرحبًا أيها المستكشف!',
+  'What would you weigh on Mars?': 'كم سيكون وزنك على المريخ؟',
+  'Your journey starts here. Fly through the solar system and meet every planet up close.':
+      'رحلتك تبدأ من هنا. حلّق عبر المجموعة الشمسية وتعرّف على كل كوكب عن قرب.',
+  'Your astronaut guide is ready. Learn real facts about every planet, one mission at a time.':
+      'رائد الفضاء مرشدك جاهز. تعلّم حقائق حقيقية عن كل كوكب، مهمة تلو الأخرى.',
+  'Compare your weight and age on every planet with real gravity data, then share it with friends.':
+      'قارن وزنك وعمرك على كل كوكب باستخدام بيانات جاذبية حقيقية، ثم شاركه مع أصدقائك.',
   'Skip': 'تخطي',
   'Get Started': 'ابدأ الآن',
   'Next': 'التالي',
