@@ -5,10 +5,10 @@ import 'package:space_app/features/learn/presenter/manager/videos_state.dart';
 class VideosCubit extends Cubit<VideosState> {
   VideosCubit() : super(VideosState());
 
-  Future<void> getVideos() async {
+  Future<void> getVideos(String localCode) async {
     emit(VideosState(isLoading: true));
 
-    final result = await getApiVideos();
+    final result = localCode == "en"?await getApiEnVideos():await getApiArVideos();
 
     result.fold(
       (error) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:space_app/features/home/presenter/manager/planets_api_cubit.dart';
+import 'package:space_app/features/learn/presenter/manager/videos_cubit.dart';
 import 'package:space_app/features/settings/presenter/manager/locale_cubit.dart';
 import 'lang_button.dart';
 
@@ -27,6 +28,7 @@ class LanguageSelector extends StatelessWidget {
                 onTap: () {
                   context.read<LocaleCubit>().setLanguage('en');
                   context.read<PlanetsApiCubit>().getPlanets('en');
+                  context.read<VideosCubit>().getVideos("en");
                 },
               ),
               LangButton(
@@ -35,6 +37,7 @@ class LanguageSelector extends StatelessWidget {
                 onTap: () {
                   context.read<LocaleCubit>().setLanguage('ar');
                   context.read<PlanetsApiCubit>().getPlanets('ar');
+                  context.read<VideosCubit>().getVideos("ar");
                 },
               ),
             ],

@@ -5,12 +5,12 @@ import 'package:space_app/core/components/branding.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
 import 'package:space_app/features/home/presenter/manager/planets_api_cubit.dart';
+import 'package:space_app/features/learn/presenter/manager/videos_cubit.dart';
 import 'package:space_app/features/onboarding/presenter/screens/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
   static String splashRoute = "/splash";
-
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
@@ -27,6 +27,7 @@ class _SplashScreenState extends State<SplashScreen>
       if (!mounted) return;
       Navigator.pushReplacementNamed(context, OnboardingScreen.onboardingRout);
       context.read<PlanetsApiCubit>().getPlanets(Localizations.localeOf(context).languageCode);
+      context.read<VideosCubit>().getVideos(Localizations.localeOf(context).languageCode);
     });
     _controller = AnimationController(
       vsync: this,

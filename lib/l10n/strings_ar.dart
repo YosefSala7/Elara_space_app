@@ -1,7 +1,7 @@
 // Arabic translations. Key = the original English text used in the code.
 // Add new entries here to translate new strings; missing keys fall back to English.
 
-const Map<String, String> arStrings = {
+ Map<String, String> arStrings = {
   '01 — LIFTOFF': '01 — الإقلاع',
   '02 — DISCOVER': '02 — اكتشف',
   '03 — EXPERIENCE': '03 — جرّب',
@@ -76,7 +76,7 @@ const Map<String, String> arStrings = {
   'WATCH & DISCOVER': 'شاهد واكتشف',
   'Space Academy': 'أكاديمية الفضاء',
   'Continue learning': 'واصل التعلّم',
-  'lessons {count}': 'الدروس: {count}',
+  'lessons {count}': 'الدروس:  {count}',
   'No lessons yet': 'لا توجد دروس بعد',
   'FEATURED': 'مميز',
   'NEW LESSON • {duration}': 'درس جديد • {duration}',
@@ -340,4 +340,25 @@ const Map<String, String> arStrings = {
       'خصوصيتك تهمّنا.\n\n• يُستخدم الوزن والعمر اللذان تدخلهما فقط لحساب نتائجك على كل كوكب.\n• نحن لا نبيع معلوماتك الشخصية ولا نشاركها.\n• يستخدم التطبيق خدمات أطراف ثالثة (مثل Supabase لبيانات التطبيق ويوتيوب للفيديوهات)، وقد يكون لها سياسات خصوصية خاصة بها.\n\nباستخدامك Elara فإنك توافق على هذه السياسة. لأي استفسار، تواصل معنا على elaraspace@gmail.com.',
   'By using Elara, you agree to the following:\n\n• The app is for educational and entertainment purposes only.\n• Planet calculations are approximate and not for scientific use.\n• Do not misuse the app or try to disrupt its services.\n• We may update the app and these terms at any time.\n\nIf you do not agree, please stop using the app.':
       'باستخدامك Elara فإنك توافق على ما يلي:\n\n• التطبيق مخصّص للأغراض التعليمية والترفيهية فقط.\n• حسابات الكواكب تقريبية وليست للاستخدام العلمي.\n• لا تُسئ استخدام التطبيق أو تحاول تعطيل خدماته.\n• قد نحدّث التطبيق وهذه الشروط في أي وقت.\n\nإذا لم توافق، يُرجى التوقف عن استخدام التطبيق.',
+      'No internet connection right now.\nPlease check your connection and try again.':
+    'مفيش اتصال بالإنترنت حالياً.\nاتأكد من اتصالك بالإنترنت وحاول تاني.',
+
+'There is a server issue right now.\nPlease try again in a little while.':
+    'في مشكلة في السيرفر حالياً.\nحاول تاني بعد شوية.',
+
+'Something went wrong while loading the videos.\nPlease try again.':
+    'حصلت مشكلة أثناء تحميل الفيديوهات.\nمن فضلك حاول تاني.',
+
+'No internet connection right now.\nPlease check your connection and try again.':
+    'مفيش اتصال بالإنترنت حالياً.\nاتأكد من اتصالك بالإنترنت وحاول تاني.',
+
+'There is a server issue right now.\nPlease try again in a little while.':
+    'في مشكلة في السيرفر حالياً.\nحاول تاني بعد شوية.',
+
+'Something went wrong while loading the videos.\nPlease try again.':
+    'حصلت مشكلة أثناء تحميل الفيديوهات.\nمن فضلك حاول تاني.',
+"internet":"الانترنت",
+"try again":"إعادة المحاولة",
+
+
 };

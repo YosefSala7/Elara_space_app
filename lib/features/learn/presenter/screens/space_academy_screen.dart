@@ -14,6 +14,7 @@ import 'package:space_app/features/learn/presenter/components/video_list_tile.da
 
 import 'package:space_app/features/learn/presenter/manager/videos_cubit.dart';
 import 'package:space_app/features/learn/presenter/manager/videos_state.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 
 import 'video_detail_screen.dart';
 
@@ -31,44 +32,44 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
 
   // Fake videos for Skeletonizer
   List<Video> get _skeletonVideos => [
-        Video(
-          id: '1',
-          title: 'Exploring the Solar System',
-          category: 'Solar System',
-          filter: _filter,
-          duration: const Duration(minutes: 12),
-          youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-          description: 'Exploring space and planets',
-          isFeatured: true,
-        ),
-        Video(
-          id: '2',
-          title: 'Understanding Black Holes',
-          category: 'Black Holes',
-          filter: _filter,
-          duration: const Duration(minutes: 8),
-          youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-          description: 'Learn about black holes',
-        ),
-        Video(
-          id: '3',
-          title: 'The Secrets of Galaxies',
-          category: 'Galaxies',
-          filter: _filter,
-          duration: const Duration(minutes: 10),
-          youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-          description: 'Discover galaxies',
-        ),
-        Video(
-          id: '4',
-          title: 'Journey Through the Planets',
-          category: 'Planets',
-          filter: _filter,
-          duration: const Duration(minutes: 15),
-          youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-          description: 'A journey through planets',
-        ),
-      ];
+    Video(
+      id: '1',
+      title: 'Exploring the Solar System',
+      category: 'Solar System',
+      filter: _filter,
+      duration: const Duration(minutes: 12),
+      youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      description: 'Exploring space and planets',
+      isFeatured: true,
+    ),
+    Video(
+      id: '2',
+      title: 'Understanding Black Holes',
+      category: 'Black Holes',
+      filter: _filter,
+      duration: const Duration(minutes: 8),
+      youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      description: 'Learn about black holes',
+    ),
+    Video(
+      id: '3',
+      title: 'The Secrets of Galaxies',
+      category: 'Galaxies',
+      filter: _filter,
+      duration: const Duration(minutes: 10),
+      youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      description: 'Discover galaxies',
+    ),
+    Video(
+      id: '4',
+      title: 'Journey Through the Planets',
+      category: 'Planets',
+      filter: _filter,
+      duration: const Duration(minutes: 15),
+      youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      description: 'A journey through planets',
+    ),
+  ];
 
   void _open(Video video) {
     Navigator.of(context).push(
@@ -90,7 +91,7 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
         message.contains('connection') ||
         message.contains('timeout') ||
         message.contains('clientexception')) {
-      return 'مفيش اتصال بالإنترنت حالياً.\nاتأكد من اتصالك بالإنترنت وحاول تاني.';
+      return context.tr("No internet connection right now.\nPlease check your connection and try again.");
     }
 
     if (message.contains('postgrest') ||
@@ -99,16 +100,16 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
         message.contains('503') ||
         message.contains('504') ||
         message.contains('server')) {
-      return 'في مشكلة في السيرفر حالياً.\nحاول تاني بعد شوية.';
+      return context.tr('There is a server issue right now.\nPlease try again in a little while.');
     }
 
-    return 'حصلت مشكلة أثناء تحميل الفيديوهات.\nمن فضلك حاول تاني.';
+    return context.tr('Something went wrong while loading the videos.\nPlease try again.');
   }
 
   Widget _buildError(String error, TextTheme t) {
     final message = _getErrorMessage(error);
 
-    final isNetworkError = message.contains('الإنترنت');
+    final isNetworkError = message.contains(context.tr("internet"));
 
     return Center(
       child: Padding(
@@ -142,10 +143,12 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
             const SizedBox(height: 24),
             ElevatedButton.icon(
               onPressed: () {
-                context.read<VideosCubit>().getVideos();
+                context.read<VideosCubit>().getVideos(
+                  Localizations.localeOf(context).languageCode,
+                );
               },
               icon: const Icon(Icons.refresh_rounded),
-              label: const Text('إعادة المحاولة'),
+              label:  Text(context.tr("try again")),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.secorndary,
                 foregroundColor: AppColors.white,
@@ -166,13 +169,11 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
 
     final items = videos
         .where((v) => !v.isFeatured)
-        .where(
-          (v) => _filter == VideoFilter.all || v.filter == _filter,
-        )
+        .where((v) => _filter == VideoFilter.all || v.filter == _filter)
         .toList();
 
     return ListView(
-      padding: const EdgeInsets.only(bottom: 32),
+      padding: EdgeInsets.only(bottom: (MediaQuery.heightOf(context)*0.1)),
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
@@ -180,17 +181,13 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'WATCH & DISCOVER',
-                style: t.labelSmall?.copyWith(
-                  color: AppColors.white,
-                ),
+                context.tr('WATCH & DISCOVER'),
+                style: t.labelSmall?.copyWith(color: AppColors.white),
               ),
               const SizedBox(height: 4),
               Text(
-                'Space Academy',
-                style: t.displayMedium?.copyWith(
-                  color: AppColors.white,
-                ),
+                context.tr('Space Academy'),
+                style: t.displayMedium?.copyWith(color: AppColors.white),
               ),
             ],
           ),
@@ -226,16 +223,14 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                'Continue learning',
-                style: t.headlineSmall?.copyWith(
-                  color: AppColors.white,
-                ),
+                context.tr('Continue learning'),
+                style: t.headlineSmall?.copyWith(color: AppColors.white),
               ),
               Text(
-                'lessons ${items.length}',
-                style: t.labelSmall?.copyWith(
-                  color: AppColors.secorndary,
-                ),
+                context
+                    .tr('lessons {count}')
+                    .replaceAll('{count}', items.length.toString()),
+                style: t.labelSmall?.copyWith(color: AppColors.secorndary),
               ),
             ],
           ),
@@ -252,9 +247,7 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
               for (final (i, v) in items.indexed)
                 TweenAnimationBuilder<double>(
                   tween: Tween(begin: 0, end: 1),
-                  duration: Duration(
-                    milliseconds: 300 + i * 90,
-                  ),
+                  duration: Duration(milliseconds: 300 + i * 90),
                   curve: Curves.easeOutCubic,
                   builder: (_, value, child) => Opacity(
                     opacity: value,
@@ -264,13 +257,8 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                    ),
-                    child: VideoListTile(
-                      video: v,
-                      onTap: () => _open(v),
-                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: VideoListTile(video: v, onTap: () => _open(v)),
                   ),
                 ),
 
@@ -278,10 +266,8 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
                 Padding(
                   padding: const EdgeInsets.all(40),
                   child: Text(
-                    'No lessons yet',
-                    style: t.labelSmall?.copyWith(
-                      color: AppColors.secorndary,
-                    ),
+                    context.tr('No lessons yet'),
+                    style: t.labelSmall?.copyWith(color: AppColors.secorndary),
                   ),
                 ),
             ],
@@ -304,9 +290,7 @@ class _SpaceAcademyScreenState extends State<SpaceAcademyScreen> {
                 return _buildError(state.error!, t);
               }
 
-              final videos = state.isLoading
-                  ? _skeletonVideos
-                  : state.videos;
+              final videos = state.isLoading ? _skeletonVideos : state.videos;
 
               return Skeletonizer(
                 enabled: state.isLoading,
