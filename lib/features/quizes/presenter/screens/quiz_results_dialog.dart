@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
 import 'package:space_app/features/quizes/data/models/quiz_result.dart';
@@ -66,11 +67,11 @@ class QuizResultsDialog extends StatelessWidget {
               Icon(Icons.emoji_events, size: 48, color: AppColors.primary),
               const SizedBox(height: 12),
               Text(
-                'QUIZ COMPLETE',
+                context.tr('QUIZ COMPLETE'),
                 style: TextStyle(
                   fontFamily: FontFamily.spaceGrotesk,
                   fontSize: 13,
-                  letterSpacing: 1.4,
+                  letterSpacing: context.ls(1.4),
                   color: AppColors.secorndary,
                 ),
               ),
@@ -85,18 +86,18 @@ class QuizResultsDialog extends StatelessWidget {
                 ),
               ),
               Text(
-                'FINAL SCORE',
+                context.tr('FINAL SCORE'),
                 style: TextStyle(
                   fontFamily: FontFamily.spaceGrotesk,
                   fontSize: 12,
-                  letterSpacing: 1,
+                  letterSpacing: context.ls(1),
                   color: AppColors.primary,
                 ),
               ),
               if (isNewHighScore) ...[
                 const SizedBox(height: 10),
                 Text(
-                  '★ New High Score!',
+                  context.tr('★ New High Score!'),
                   style: TextStyle(
                     fontFamily: FontFamily.spaceGrotesk,
                     fontSize: 14,
@@ -120,7 +121,7 @@ class QuizResultsDialog extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Text(
-                result.message,
+                context.tr(result.message),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: FontFamily.spaceGrotesk,
@@ -141,7 +142,7 @@ class QuizResultsDialog extends StatelessWidget {
                     shape: const StadiumBorder(),
                   ),
                   child: Text(
-                    'Play Again',
+                    context.tr('Play Again'),
                     style: TextStyle(
                       fontFamily: FontFamily.spaceGrotesk,
                       fontSize: 15,
@@ -162,7 +163,7 @@ class QuizResultsDialog extends StatelessWidget {
                     shape: const StadiumBorder(),
                   ),
                   child: Text(
-                    'Back to Categories',
+                    context.tr('Back to Categories'),
                     style: TextStyle(
                       fontFamily: FontFamily.spaceGrotesk,
                       fontSize: 15,
@@ -206,7 +207,7 @@ class _Stat extends StatelessWidget {
             ),
             const SizedBox(height: 2),
             Text(
-              label,
+              context.tr(label),
               style: TextStyle(
                 fontFamily: FontFamily.spaceGrotesk,
                 fontSize: 12,

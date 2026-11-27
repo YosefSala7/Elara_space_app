@@ -49,24 +49,28 @@ class InfoAppBar extends StatelessWidget {
   String name;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: .start,
-      children: [
-        CustomArrowButton(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          direction: "left",
-        ),
-
-        Text(
-          name,
-          style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-            fontFamily: FontFamily.audiowide,
-            fontWeight: .w700,
+    return Directionality(
+      textDirection: .ltr,
+      child: Row(
+        mainAxisAlignment: .start,
+        children: [
+          CustomArrowButton(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            direction: "left",
           ),
-        ),
-      ],
+          Spacer(),
+          Text( 
+            name,
+            style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+              fontFamily: FontFamily.audiowide,
+              fontWeight: .w700,
+            ),
+          ),
+          Spacer()
+        ],
+      ),
     );
   }
 }

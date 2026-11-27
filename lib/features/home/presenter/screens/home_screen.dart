@@ -2,6 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:coverflow_carousel/coverflow_carousel.dart';
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:space_app/core/components/background.dart';
@@ -41,11 +42,11 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               spacing: 40,
               children: [
-                Text("Explore", style: textTheme.headlineSmall),
+                Text(context.tr("Explore"), style: textTheme.headlineSmall),
                 Align(
-                  alignment: Alignment.topLeft,
+                  alignment: AlignmentGeometry.topStart,
                   child: Text(
-                    "Which planet\nwould you like to explore?",
+                    context.tr("Which planet\nwould you like to explore?"),
                     style: textTheme.headlineSmall,
                   ),
                 ),
@@ -98,89 +99,98 @@ class _HomeScreenState extends State<HomeScreen> {
                     if (state.planets.isNotEmpty) {
                       return Column(
                         children: [
-                          CoverflowCarousel.builder(
-                            isInfinite: true,
-                            initialPage: _currentPage,
-                            onPageChanged: (value) {
-                              setState(() {
-                                _currentPage = value;
-                              });
-                            },
-                            controller: _pageController,
-                            entryAnimationDuration: const Duration(
-                              milliseconds: 100,
+                          Directionality(
+                            textDirection: .ltr,
+                            child: CoverflowCarousel.builder(
+                              isInfinite: true,
+                              initialPage: _currentPage,
+                              onPageChanged: (value) {
+                                setState(() {
+                                  _currentPage = value;
+                                });
+                              },
+
+                              controller: _pageController,
+                              entryAnimationDuration: const Duration(
+                                milliseconds: 100,
+                              ),
+                              itemCount: state.planets.length,
+                              elevation: 0,
+                              itemWidth: 300,
+                              itemHeight: 300,
+                              scrollDirection: Axis.horizontal,
+
+                              nearCardSpacing: 110,
+                              farCardSpacing: 100,
+                              skewAngle: -0.3,
+                              obscure: 0.4,
+                              enableShadow: false,
+                              itemBuilder: (context, index) {
+                                return OpenContainer(
+                                  openBuilder: (context, action) =>
+                                      PlanetInfo(planet: state.planets[index]),
+                                  closedBuilder: (context, action) => Padding(
+                                    padding: const EdgeInsets.all(30.0),
+                                    child: CachedNetworkImage(
+                                      width: .infinity,
+                                      height: .infinity,
+                                      imageUrl: state.planets[index].images,
+                                      fit: BoxFit.contain,
+                                      placeholder: (context, url) =>
+                                          const Skeletonizer.zone(
+                                            child: Bone.circle(size: 300),
+                                          ),
+                                      errorWidget: (context, url, error) =>
+                                          const Icon(Icons.broken_image),
+                                    ),
+                                  ),
+                                  closedShape: const CircleBorder(
+                                    side: BorderSide.none,
+                                  ),
+                                  closedColor: Colors.transparent,
+                                  closedElevation: 0,
+                                );
+                              },
                             ),
-                            itemCount: state.planets.length,
-                            elevation: 0,
-                            itemWidth: 300,
-                            itemHeight: 300,
-                            scrollDirection: Axis.horizontal,
-                            nearCardSpacing: 110,
-                            farCardSpacing: 100,
-                            skewAngle: -0.3,
-                            obscure: 0.4,
-                            enableShadow: false,
-                            itemBuilder: (context, index) {
-                              return OpenContainer(
-                                openBuilder: (context, action) =>
-                                    PlanetInfo(planet: state.planets[index]),
-                                closedBuilder: (context, action) => Padding(
-                                  padding: const EdgeInsets.all(30.0),
-                                  child: CachedNetworkImage(
-                                    width: .infinity,
-                                    height: .infinity,
-                                    imageUrl: state.planets[index].images,
-                                    fit: BoxFit.contain,
-                                    placeholder: (context, url) =>
-                                        const Skeletonizer.zone(
-                                          child: Bone.circle(size: 300),
-                                        ),
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(Icons.broken_image),
+                          ),
+                          Directionality(
+                            textDirection: .ltr,
+                            child: Row(
+                              children: [
+                                CustomArrowButton(
+                                  onTap: () => _pageController.previous(),
+                                  direction: "left",
+                                ),
+                                const Spacer(),
+                                PageTransitionSwitcher(
+                                  duration: const Duration(milliseconds: 300),
+                                  transitionBuilder:
+                                      (
+                                        child,
+                                        primaryAnimation,
+                                        secondaryAnimation,
+                                      ) {
+                                        return FadeThroughTransition(
+                                          animation: primaryAnimation,
+                                          secondaryAnimation:
+                                              secondaryAnimation,
+                                          fillColor: Colors.transparent,
+                                          child: child,
+                                        );
+                                      },
+                                  child: Text(
+                                    state.planets[_currentPage].name,
+                                    key: ValueKey<int>(_currentPage),
+                                    style: textTheme.headlineSmall,
                                   ),
                                 ),
-                                closedShape: const CircleBorder(
-                                  side: BorderSide.none,
+                                const Spacer(),
+                                CustomArrowButton(
+                                  onTap: () => _pageController.next(),
+                                  direction: "right",
                                 ),
-                                closedColor: Colors.transparent,
-                                closedElevation: 0,
-                              );
-                            },
-                          ),
-                          Row(
-                            children: [
-                              CustomArrowButton(
-                                onTap: () => _pageController.previous(),
-                                direction: "left",
-                              ),
-                              const Spacer(),
-                              PageTransitionSwitcher(
-                                duration: const Duration(milliseconds: 300),
-                                transitionBuilder:
-                                    (
-                                      child,
-                                      primaryAnimation,
-                                      secondaryAnimation,
-                                    ) {
-                                      return FadeThroughTransition(
-                                        animation: primaryAnimation,
-                                        secondaryAnimation: secondaryAnimation,
-                                        fillColor: Colors.transparent,
-                                        child: child,
-                                      );
-                                    },
-                                child: Text(
-                                  state.planets[_currentPage].name,
-                                  key: ValueKey<int>(_currentPage),
-                                  style: textTheme.headlineSmall,
-                                ),
-                              ),
-                              const Spacer(),
-                              CustomArrowButton(
-                                onTap: () => _pageController.next(),
-                                direction: "right",
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       );

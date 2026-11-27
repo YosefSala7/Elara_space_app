@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/components/branding.dart';
@@ -10,7 +11,6 @@ import 'package:space_app/features/quizes/presenter/screens/category_card.dart';
 import 'package:space_app/features/quizes/presenter/screens/quiz_scaffold.dart';
 
 import 'quiz_questions_screen.dart';
-
 
 /// Entry point of the quiz feature. Provides the [QuizCubit] to both screens.
 class QuizCategoriesScreen extends StatelessWidget {
@@ -59,7 +59,7 @@ class _CategoriesView extends StatelessWidget {
             return ListView.separated(
               padding: const EdgeInsets.fromLTRB(20, 20, 20, 100),
               itemCount: state.categories.length + 1,
-              separatorBuilder: (_, __) => const SizedBox(height: 14),
+              separatorBuilder: (_, _) => const SizedBox(height: 14),
               itemBuilder: (context, i) {
                 if (i == 0) return const _Header();
                 final category = state.categories[i - 1];
@@ -77,7 +77,7 @@ class _CategoriesView extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    state.message,
+                    context.tr(state.message),
                     style: TextStyle(
                       fontFamily: FontFamily.spaceGrotesk,
                       color: AppColors.white,
@@ -87,7 +87,7 @@ class _CategoriesView extends StatelessWidget {
                   TextButton(
                     onPressed: () => context.read<QuizCubit>().loadCategories(),
                     child: Text(
-                      'Retry',
+                      context.tr('Retry'),
                       style: TextStyle(color: AppColors.primary),
                     ),
                   ),
@@ -112,20 +112,18 @@ class _Header extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        
-        
         Text(
-          'TEST YOUR KNOWLEDGE',
+          context.tr('TEST YOUR KNOWLEDGE'),
           style: TextStyle(
             fontFamily: FontFamily.spaceGrotesk,
             fontSize: 14,
-            letterSpacing: 1.2,
+            letterSpacing: context.ls(1.2),
             color: AppColors.white,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Choose a Category',
+          context.tr('Choose a Category'),
           style: TextStyle(
             fontFamily: FontFamily.spaceGrotesk,
             fontSize: 26,
@@ -135,7 +133,9 @@ class _Header extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         Text(
-          'Earn +10 for each correct answer, −5 for each wrong one.',
+          context.tr(
+            'Earn +10 for each correct answer, −5 for each wrong one.',
+          ),
           style: TextStyle(
             fontFamily: FontFamily.spaceGrotesk,
             fontSize: 13,

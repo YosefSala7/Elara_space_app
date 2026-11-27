@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/features/learn/data/models/video.dart';
 
@@ -48,23 +49,23 @@ class VideoListTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(children: [
-                    Text(video.category,
+                    Text(context.tr(video.category),
                         style: t.labelSmall?.copyWith(color: AppColors.primary)),
                     if (video.level != null) ...[
                       const SizedBox(width: 8),
-                      Text(video.level!,
+                      Text(context.tr(video.level!),
                           style: t.labelSmall?.copyWith(
                               color: AppColors.primary,
                               fontWeight: FontWeight.w700)),
                     ],
                   ]),
                   const SizedBox(height: 4),
-                  Text(video.title,
+                  Text(context.tr(video.title),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: t.titleMedium?.copyWith(color: AppColors.white)),
                   const SizedBox(height: 6),
-                  Text(video.description,
+                  Text(context.tr(video.description),
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style:

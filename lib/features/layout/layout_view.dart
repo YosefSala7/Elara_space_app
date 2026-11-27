@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/assets.gen.dart';
@@ -100,7 +101,7 @@ class _LayoutViewState extends State<LayoutView> {
                               ),
                             ),
                           ),
-                          label: "Home",
+                          label: context.tr("Home"),
                         ),
 
                         // 2. Metrics
@@ -131,7 +132,7 @@ class _LayoutViewState extends State<LayoutView> {
                               ),
                             ),
                           ),
-                          label: "Metrics",
+                          label: context.tr("Metrics"),
                         ),
 
                         // 3. Learn
@@ -166,7 +167,7 @@ class _LayoutViewState extends State<LayoutView> {
                               ),
                             ),
                           ),
-                          label: "Learn",
+                          label: context.tr("Learn"),
                         ),
 
                         // 4. Quizes
@@ -205,7 +206,7 @@ class _LayoutViewState extends State<LayoutView> {
                               ),
                             ),
                           ),
-                          label: "Quizes",
+                          label: context.tr("Quizes"),
                         ),
 
                         // 5. Settings
@@ -244,7 +245,7 @@ class _LayoutViewState extends State<LayoutView> {
                               ),
                             ),
                           ),
-                          label: "Settings",
+                          label: context.tr("Settings"),
                         ),
                       ],
                     ),

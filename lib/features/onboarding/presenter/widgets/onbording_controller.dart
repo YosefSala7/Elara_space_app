@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:space_app/core/app_colors.dart';
-import 'package:space_app/features/layout/layout_view.dart';
 import 'package:space_app/features/onboarding/presenter/widgets/page_indictor.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 
-class OnbordingController extends StatelessWidget {
+class OnboardingController extends StatelessWidget {
   final int currentPage;
   final int pageIndex;
   final PageController pageController;
   final VoidCallback onNext;
   final VoidCallback onSkip;
-  const OnbordingController({
+
+  const OnboardingController({
     super.key,
     required this.currentPage,
     required this.pageIndex,
@@ -22,49 +23,49 @@ class OnbordingController extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: .all(24),
+        padding: const EdgeInsets.all(24),
         child: Column(
-          mainAxisAlignment: .spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Align(
-              alignment: .topRight,
+              alignment: Alignment.topRight,
               child: GestureDetector(
                 onTap: onSkip,
-                child: Text('Skip', style: TextStyle(color: AppColors.white)),
+                child: Text(
+                  context.tr('Skip'),
+                  style: TextStyle(color: AppColors.white),
+                ),
               ),
             ),
-
             Row(
-              mainAxisAlignment: .spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 PageIndictor(
                   pageController: pageController,
                   pageIndex: pageIndex,
                 ),
-
                 ElevatedButton(
-                  onPressed: currentPage == pageIndex - 1
-                      ? () {
-                          Navigator.pushNamed(context, LayoutView.layoutRoute);
-                        }
-                      : onNext,
+                  onPressed: onNext,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFFF4D4D),
+                    backgroundColor: AppColors.primary,
                     foregroundColor: Colors.white,
-                    minimumSize: const Size(110, 38),
+                    fixedSize: const Size(140, 40),
+                    padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
                   child: Row(
-                    mainAxisSize: .min,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        currentPage == pageIndex - 1 ? 'Get Started' : "Next",
-                        style: TextStyle(fontSize: 12),
+                        context.tr(
+                          currentPage == pageIndex - 1 ? 'Get Started' : 'Next',
+                        ),
+                        style: const TextStyle(fontSize: 12),
                       ),
-                      SizedBox(width: 6),
-                      Icon(Icons.arrow_forward, size: 14),
+                      const SizedBox(width: 6),
+                      const Icon(Icons.arrow_forward, size: 14),
                     ],
                   ),
                 ),

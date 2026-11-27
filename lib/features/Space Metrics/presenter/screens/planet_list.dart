@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:glass/glass.dart';
 import 'package:space_app/core/app_colors.dart';
@@ -51,7 +52,7 @@ class PlanetList extends StatelessWidget {
                         SizedBox(height: 110, child: planet.image),
                         const SizedBox(height: 8),
                         Text(
-                          planet.name,
+                          context.tr(planet.name),
                           style: TextStyle(
                             color: AppColors.white,
                             fontFamily: FontFamily.spaceGrotesk,

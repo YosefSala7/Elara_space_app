@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_app/l10n/app_localizations.dart';
 import 'package:space_app/core/app_colors.dart';
 import 'package:space_app/core/gen/fonts.gen.dart';
 
@@ -21,11 +22,14 @@ class QuizProgressBar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'QUESTION $current OF $total',
+          context.trf('QUESTION {current} OF {total}', {
+            'current': current,
+            'total': total,
+          }),
           style: TextStyle(
             fontFamily: FontFamily.spaceGrotesk,
             fontSize: 12,
-            letterSpacing: 1,
+            letterSpacing: context.ls(1),
             color: AppColors.primary,
           ),
         ),

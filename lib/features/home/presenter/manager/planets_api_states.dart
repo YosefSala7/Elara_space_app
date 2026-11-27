@@ -1,15 +1,10 @@
 import 'package:space_app/features/home/data/models/planet_model.dart';
 
-
-class PlanetsState  {
+class PlanetsState {
   List<PlanetModel> planets;
   String? error;
   bool isLoading;
-  PlanetsState({
-    this.isLoading = false,
-    this.error = null,
-    this.planets = const [],
-  });
+  PlanetsState({this.isLoading = false, this.error, this.planets = const []});
 }
 
 // class LoadingPlanetsState extends PlanetsState {}

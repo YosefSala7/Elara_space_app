@@ -46,16 +46,20 @@ class QuizQuestionsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    CustomArrowButton(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      direction: "left",
-                    ),
-                  ],
+                Directionality(
+                  textDirection: .ltr,
+                  child: Row(
+                    children: [
+                      CustomArrowButton(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        direction: "left",
+                      ),
+                    ],
+                  ),
                 ),
+                const SizedBox(height: 22),
                 QuizHeader(score: state.score),
                 const SizedBox(height: 22),
                 QuizProgressBar(
